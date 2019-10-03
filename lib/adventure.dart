@@ -7,12 +7,10 @@ import 'package:shelter_adventure/encounter.dart';
 
 class AdventurePage extends StatelessWidget {
   // The adventure page is the ui representation of the current game in its current state
-  // when a new game is started, a new Adventure instance is created
-  final Adventure _adventure = Adventure();
+  static AdventureLogic logic = AdventureLogic();
 
   @override
   Widget build(BuildContext context) {
-    AdventureLogic logic = AdventureLogic(theAdventure: _adventure);
 
     // the scaffold is an important 'material widget' that other widgets below it depend on
     // the body of the scaffold is what we see on the screen
@@ -32,6 +30,23 @@ class AdventurePage extends StatelessWidget {
                 // if the stream is empty, return a loading icon
                 if (!snapshot.hasData) return CircularProgressIndicator();
 
+                if (snapshot.data.adventureOver) {
+                  // if the game is over, return the ending screen
+
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Container(),
+                      Text('Game Over'),
+                      FlatButton(
+                        onPressed: logic.newAdventure,
+                        child: Text('New Adventure'),
+                      ),
+
+                    ],
+                  );
+                }
+
                 // otherwise, proceed as usual
                 return Column(
                   mainAxisSize: MainAxisSize.max,
@@ -40,6 +55,16 @@ class AdventurePage extends StatelessWidget {
                     Text(
                       'Shelter Adventure',
                       style: TextStyle(fontSize: 30.0),
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          width: MediaQuery.of(context).size.width *
+                              snapshot.data.pctOver,
+                          height: 30.0,
+                          color: Colors.green.shade300,
+                        ),
+                      ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -95,6 +120,15 @@ class AdventurePage extends StatelessWidget {
 // this class represents the state of the current game
 
 class Adventure {
+
+  // static Adventure _theAdventure = Adventure();
+  // Adventure get theAdventure => _theAdventure;
+  // void newAdventure() => _theAdventure = Adventure();
+
+  int numberOfTurnsUntilEnd;
+  bool adventureOver = false;
+  double pctOver = 0.0;
+
   // the underscore means a variable is private
   double _var1;
   double _var2;
@@ -108,7 +142,8 @@ class Adventure {
   double get var4 => _var4;
 
   // the constructor
-  Adventure() {
+  Adventure({this.numberOfTurnsUntilEnd}) {
+    if (numberOfTurnsUntilEnd == null) numberOfTurnsUntilEnd = 10;
     _var1 = 0.5;
     _var2 = 0.5;
     _var3 = 0.5;
@@ -129,9 +164,17 @@ class AdventureLogic {
   Adventure theAdventure;
   Encounter currentEncounter;
   Random _random = Random();
+  int numberOfTurns = 0;
+
+  void newAdventure(){
+    theAdventure = Adventure();
+    numberOfTurns = 0;
+    currentEncounter = getRandomEncounter();
+    _updateAdventure();
+  }
 
   AdventureLogic({this.theAdventure}) {
-    assert(theAdventure != null);
+    if(theAdventure == null) theAdventure = Adventure();
     currentEncounter = getRandomEncounter();
     _updateAdventure();
   }
@@ -143,8 +186,7 @@ class AdventureLogic {
   void _updateAdventure() => _adventureStreamController.sink.add(theAdventure);
 
   void incrementAdventure(bool agreeToProposition) {
-
-    // depending on the proposition, and whether the user agrees, 
+    // depending on the proposition, and whether the user agrees,
     // increment the game state and then update the adventure
     if (agreeToProposition) {
       theAdventure.incrementVar1(currentEncounter.agreeEffect[0]);
@@ -158,9 +200,16 @@ class AdventureLogic {
       theAdventure.incrementVar4(currentEncounter.disagreeEffect[3]);
     }
 
-    //generate a new encounter
-    currentEncounter = getRandomEncounter();
-
+    numberOfTurns++;
+    theAdventure.pctOver =
+        numberOfTurns / (theAdventure.numberOfTurnsUntilEnd - 1);
+    if (numberOfTurns >= theAdventure.numberOfTurnsUntilEnd) {
+      // end adventure ...
+      theAdventure.adventureOver = true;
+    } else {
+      //generate a new encounter
+      currentEncounter = getRandomEncounter();
+    }
     _updateAdventure();
   }
 
@@ -168,32 +217,38 @@ class AdventureLogic {
     _adventureStreamController.close();
   }
 
-
-
-
   static int previousEncounterIndex = -1;
   static List<Encounter> encounters = [
-    Encounter(text:'You meet a portly gopher who offers his services in exchange for a steady supply of grass roots'),
-    Encounter(text: 'Two neighborhood cats ambush you in the alley and demand pets, or else'),
-    Encounter(text: 'You are overcome with a sudden compulsion to dig a big hole in the back yard'),
+    Encounter(
+        text:
+            'You meet a portly gopher who offers his services in exchange for a steady supply of grass roots'),
+    Encounter(
+        text:
+            'Two neighborhood cats ambush you in the alley and demand pets, or else'),
+    Encounter(
+        text:
+            'You are overcome with a sudden compulsion to dig a big hole in the back yard'),
     Encounter(text: 'Your cat reminds you that it is time for breakfast'),
-    Encounter(text: 'Four friends approach you and gently remind you about that time you promised to throw a party for all of the neighborhood dogs'),
+    Encounter(
+        text:
+            'Four friends approach you and gently remind you about that time you promised to throw a party for all of the neighborhood dogs'),
     Encounter(text: 'It is late. You should be getting home.'),
-    Encounter(text: 'Your phone rings. It is your boss. He wants you to work this weekend.'),
+    Encounter(
+        text:
+            'Your phone rings. It is your boss. He wants you to work this weekend.'),
     Encounter(text: 'The neighbors ask if you can look after their rabbits'),
   ];
 
-  Encounter getRandomEncounter(){
+  Encounter getRandomEncounter() {
     double _randomSeed = _random.nextDouble();
     int index = (encounters.length * _randomSeed).floor();
-    
-    while(index == previousEncounterIndex){
+
+    while (index == previousEncounterIndex) {
       _randomSeed = _random.nextDouble();
       index = (encounters.length * _randomSeed).floor();
     }
-    
+
     previousEncounterIndex = index;
     return encounters[index];
   }
-
 }
