@@ -1,7 +1,7 @@
-
 import 'dart:math';
 
 class Encounter{
+  // to do: add third option, or move options to array, that factors in currency
 
   String text;
   String agreeText;

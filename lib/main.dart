@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shelter_adventure/adventure.dart';
+import 'package:shelter_adventure/components/adventure/adventure_page.dart';
 
 void main() => runApp(MyApp());
 
