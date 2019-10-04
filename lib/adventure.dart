@@ -5,34 +5,24 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shelter_adventure/encounter.dart';
 
+// The adventure page is the ui representation of the current game in its current state
 class AdventurePage extends StatelessWidget {
-  // The adventure page is the ui representation of the current game in its current state
   static AdventureLogic logic = AdventureLogic();
 
   @override
   Widget build(BuildContext context) {
-
-    // the scaffold is an important 'material widget' that other widgets below it depend on
-    // the body of the scaffold is what we see on the screen
     return Scaffold(
-      // provider is a library that helps with state management, in this case by providing access
-      // to, and properly disposing of, the adventure logic class
       body: Provider<AdventureLogic>(
         builder: (context) => logic,
         dispose: (context, value) => value.dispose(),
         child: Center(
-          // rather than use stateful widgets, and rebuild everything explicitely with setState,
-          // the stream builder connects the ui to a stream of data and re-runs the 'builder'
-          // method whenever the data (snapshot.data) in the stream changes.
           child: StreamBuilder<Adventure>(
               stream: logic.adventureStream,
               builder: (context, snapshot) {
-                // if the stream is empty, return a loading icon
                 if (!snapshot.hasData) return CircularProgressIndicator();
 
                 if (snapshot.data.adventureOver) {
                   // if the game is over, return the ending screen
-
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
@@ -42,7 +32,6 @@ class AdventurePage extends StatelessWidget {
                         onPressed: logic.newAdventure,
                         child: Text('New Adventure'),
                       ),
-
                     ],
                   );
                 }
@@ -69,13 +58,20 @@ class AdventurePage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
+                        //display the game stat widgets
                         statWidget("Operations",
                             "${snapshot.data._var1.toStringAsFixed(1)}"),
-                        statWidget("Animal Welfare",
+                        statWidget("Animals",
                             "${snapshot.data._var2.toStringAsFixed(1)}"),
-                        statWidget("Community Health",
+                        
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        statWidget("Community",
                             "${snapshot.data._var3.toStringAsFixed(1)}"),
-                        statWidget("Personal Health",
+                        statWidget("Personal",
                             "${snapshot.data._var4.toStringAsFixed(1)}"),
                       ],
                     ),
@@ -85,11 +81,11 @@ class AdventurePage extends StatelessWidget {
                     ),
                     FlatButton(
                       onPressed: () => logic.incrementAdventure(true),
-                      child: Text('Agree'),
+                      child: Text(logic.currentEncounter.agreeText),
                     ),
                     FlatButton(
                       onPressed: () => logic.incrementAdventure(false),
-                      child: Text('Disagree'),
+                      child: Text(logic.currentEncounter.disagreeText),
                     ),
                     Container(),
                   ],
@@ -120,7 +116,6 @@ class AdventurePage extends StatelessWidget {
 // this class represents the state of the current game
 
 class Adventure {
-
   // static Adventure _theAdventure = Adventure();
   // Adventure get theAdventure => _theAdventure;
   // void newAdventure() => _theAdventure = Adventure();
@@ -143,7 +138,9 @@ class Adventure {
 
   // the constructor
   Adventure({this.numberOfTurnsUntilEnd}) {
-    if (numberOfTurnsUntilEnd == null) numberOfTurnsUntilEnd = 10;
+    if (numberOfTurnsUntilEnd == null) {
+      numberOfTurnsUntilEnd = 10;
+    }
     _var1 = 0.5;
     _var2 = 0.5;
     _var3 = 0.5;
@@ -166,7 +163,7 @@ class AdventureLogic {
   Random _random = Random();
   int numberOfTurns = 0;
 
-  void newAdventure(){
+  void newAdventure() {
     theAdventure = Adventure();
     numberOfTurns = 0;
     currentEncounter = getRandomEncounter();
@@ -174,7 +171,7 @@ class AdventureLogic {
   }
 
   AdventureLogic({this.theAdventure}) {
-    if(theAdventure == null) theAdventure = Adventure();
+    if (theAdventure == null) theAdventure = Adventure();
     currentEncounter = getRandomEncounter();
     _updateAdventure();
   }
@@ -221,7 +218,8 @@ class AdventureLogic {
   static List<Encounter> encounters = [
     Encounter(
         text:
-            'You meet a portly gopher who offers his services in exchange for a steady supply of grass roots'),
+            'You meet a portly gopher who offers his services in exchange for a steady supply of grass roots',
+          agreeText: 'accept the gophers services'),
     Encounter(
         text:
             'Two neighborhood cats ambush you in the alley and demand pets, or else'),
