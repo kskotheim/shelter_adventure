@@ -53,26 +53,7 @@ class AdventurePage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        //display the game stat widgets
-                        statWidget("Operations",
-                            "${snapshot.data.var1.toStringAsFixed(1)}"),
-                        statWidget("Animals",
-                            "${snapshot.data.var2.toStringAsFixed(1)}"),
-                        
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        statWidget("Community",
-                            "${snapshot.data.var3.toStringAsFixed(1)}"),
-                        statWidget("Personal",
-                            "${snapshot.data.var4.toStringAsFixed(1)}"),
-                      ],
-                    ),
+                    
                     EncounterWidget(),
                   ],
                 );
@@ -82,19 +63,4 @@ class AdventurePage extends StatelessWidget {
     );
   }
 
-  Widget statWidget(String name, String text) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Container(
-          width: 80.0,
-          child: Text(
-            name,
-            textAlign: TextAlign.center,
-          ),
-        ),
-        Text(text),
-      ],
-    );
-  }
 }
