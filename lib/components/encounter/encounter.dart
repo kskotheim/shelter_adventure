@@ -1,27 +1,28 @@
 import 'dart:math';
 
-class Encounter{
+class Encounter {
   // to do: add third option, or move options to array, that factors in currency
 
   String text;
   String agreeText;
   String disagreeText;
+  String agreeResultText;
+  String disagreeResultText;
   List<num> agreeEffect;
   List<num> disagreeEffect;
   Random _random = Random();
 
-  Encounter({this.text, this.agreeEffect, this.disagreeEffect, this.agreeText, this.disagreeText}){
-    if(text == null){
-      text = 'this is a new encounter';
-    }
-    if(agreeText == null){
-      agreeText = "Yes";
-    }
-    if(disagreeText == null){
-      disagreeText = "No";
-    }
+  Encounter({
+    this.text = 'this is a new encounter',
+    this.agreeEffect,
+    this.disagreeEffect,
+    this.agreeText = 'Yes',
+    this.disagreeText = 'No',
+    this.agreeResultText,
+    this.disagreeResultText,
+  }) {
 
-    if(agreeEffect == null){
+    if (agreeEffect == null) {
       agreeEffect = [
         _random.nextDouble() - .5,
         _random.nextDouble() - .5,
@@ -29,7 +30,7 @@ class Encounter{
         _random.nextDouble() - .5,
       ];
     }
-    if(disagreeEffect == null){
+    if (disagreeEffect == null) {
       disagreeEffect = [
         _random.nextDouble() - .5,
         _random.nextDouble() - .5,
@@ -38,5 +39,4 @@ class Encounter{
       ];
     }
   }
-
 }

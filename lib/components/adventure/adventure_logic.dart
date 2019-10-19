@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:shelter_adventure/components/adventure/adventure.dart';
 import 'package:shelter_adventure/components/encounter/encounter.dart';
 
-
 // this class calculates the effects of the previous decision and modifies the current adventure
 // it starts and stops the listeners when created and disposed, so it ought to be properly disposed
 class AdventureLogic {
@@ -66,12 +65,18 @@ class AdventureLogic {
   static int previousEncounterIndex = -1;
   static List<Encounter> encounters = [
     Encounter(
-        text:
-            'You meet a portly gopher who offers his services in exchange for a steady supply of grass roots',
-          agreeText: 'accept the gophers services'),
+      text:
+          'You meet a portly gopher who offers his services in exchange for a steady supply of grass roots',
+      agreeText: 'accept the gophers services',
+      agreeResultText: 'you agreed',
+      disagreeResultText: 'you disagreed',
+    ),
     Encounter(
-        text:
-            'Two neighborhood cats ambush you in the alley and demand pets, or else'),
+      text:
+          'Two neighborhood cats ambush you in the alley and demand pets, or else',
+      agreeResultText: 'you agreed',
+      disagreeResultText: 'you disagreed',
+    ),
     Encounter(
         text:
             'You are overcome with a sudden compulsion to dig a big hole in the back yard'),

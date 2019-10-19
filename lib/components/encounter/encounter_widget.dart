@@ -3,10 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:shelter_adventure/components/adventure/adventure_logic.dart';
 
 class EncounterWidget extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
     AdventureLogic logic = Provider.of<AdventureLogic>(context);
 
     return Container(
@@ -19,7 +17,16 @@ class EncounterWidget extends StatelessWidget {
             child: Text(logic.currentEncounter.text),
           ),
           FlatButton(
-            onPressed: () => logic.incrementAdventure(true),
+            onPressed: () async {
+              if (logic.currentEncounter.agreeResultText != null)
+                await showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text(logic.currentEncounter.agreeResultText),
+                  ),
+                );
+              logic.incrementAdventure(true);
+            },
             child: Text(logic.currentEncounter.agreeText),
           ),
           FlatButton(
