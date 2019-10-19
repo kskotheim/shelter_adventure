@@ -12,8 +12,6 @@ class Encounter {
   List<num> disagreeEffect;
   Random _random = Random();
 
-  // this list is used for displaying the upcoming effects
-  List<List<num>> resultsSortedByVar;
 
   Encounter({
     this.text = 'this is a new encounter',
@@ -40,12 +38,5 @@ class Encounter {
         _random.nextDouble() - .5,
       ];
     }
-
-    resultsSortedByVar = [
-      [agreeEffect[0], disagreeEffect[0]],
-      [agreeEffect[1], disagreeEffect[1]],
-      [agreeEffect[2], disagreeEffect[2]],
-      [agreeEffect[3], disagreeEffect[3]]
-    ];
   }
 }

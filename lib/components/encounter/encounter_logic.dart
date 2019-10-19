@@ -1,30 +1,148 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:shelter_adventure/components/adventure/adventure_logic.dart';
+import 'package:shelter_adventure/components/encounter/encounter.dart';
+import 'package:shelter_adventure/util/style.dart';
 
 class EncounterLogic {
+  final AdventureLogic adventureLogic;
+  OptionSelected _selectedOption = NothingSelected();
+  List<dynamic> statModificationTextWidgets = [null, null, null, null];
 
-  final AdventureLogic theAdventure;
+  Encounter _currentEncounter;
+  List<List<num>> _resultsSortedByVar;
 
-  EncounterLogic({this.theAdventure}){
-    assert(theAdventure != null);
-    _optionSelectedStream.sink.add(NothingSelected());
+  EncounterLogic({this.adventureLogic}) {
+    assert(adventureLogic != null);
+    _optionSelectedStream.sink.add(_selectedOption);
+
+    // find and sort the effects for the current encounter according to stat
+    _currentEncounter = adventureLogic.currentEncounter;
+    _resultsSortedByVar = [
+      [_currentEncounter.agreeEffect[0], _currentEncounter.disagreeEffect[0]],
+      [_currentEncounter.agreeEffect[1], _currentEncounter.disagreeEffect[1]],
+      [_currentEncounter.agreeEffect[2], _currentEncounter.disagreeEffect[2]],
+      [_currentEncounter.agreeEffect[3], _currentEncounter.disagreeEffect[3]]
+    ];
   }
 
-  StreamController<OptionSelected> _optionSelectedStream = StreamController<OptionSelected>();
-  Stream<OptionSelected> get optionSelected => _optionSelectedStream.stream;
-  void selectYes() => _optionSelectedStream.sink.add(YesSelected());
-  void selectNo() => _optionSelectedStream.sink.add(NoSelected());
+  StreamController<OptionSelected> _optionSelectedStream =
+      StreamController<OptionSelected>();
+  Stream<OptionSelected> get optionSelected =>
+      _optionSelectedStream.stream.map(_saveSelectedOption);
+  void _selectYes() => _optionSelectedStream.sink.add(YesSelected());
+  void _selectNo() => _optionSelectedStream.sink.add(NoSelected());
 
-  void dispose(){
+  OptionSelected _saveSelectedOption(OptionSelected option) {
+    _selectedOption = option;
+    _setModificationText();
+    return option;
+  }
+
+  // Method to set the text widgets for the stat widgets to display according to which option is selected
+  // and what that option's effects are
+  // it is called each time a new option (yes/no) is selected
+  void _setModificationText() {
+    if (!(_selectedOption is NothingSelected)) {
+      statModificationTextWidgets = [null, null, null, null];
+      for (int i = 0; i < 4; i++) {
+        if (_selectedOption is YesSelected) {
+          num effect = _resultsSortedByVar[i][0] ?? '';
+          if (effect != 0) {
+            if (effect > 0) {
+              //if modification is positive, add a green text widget
+              statModificationTextWidgets[i] = Text(
+                ' + ${effect.toStringAsPrecision(1)}',
+                style: Style.subTitleTextStyleGreen,
+              );
+            } else {
+              //if it is negative, add a red text widget
+              statModificationTextWidgets[i] = Text(
+                ' - ${effect.abs().toStringAsPrecision(1)}',
+                style: Style.subTitleTextStyleRed,
+              );
+            }
+          }
+        }
+        if (_selectedOption is NoSelected) {
+          num effect = _resultsSortedByVar[i][1];
+          if (effect != 0) {
+            if (effect > 0) {
+              statModificationTextWidgets[i] = Text(
+                ' + ${effect.toStringAsPrecision(1)}',
+                style: Style.subTitleTextStyleGreen,
+              );
+            } else {
+              statModificationTextWidgets[i] = Text(
+                ' - ${effect.abs().toStringAsPrecision(1)}',
+                style: Style.subTitleTextStyleRed,
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Methods to handle events for the 'yes' and 'no' game buttons.
+  // They check if that option is already selected, and if it is, the
+  // adventure logic is incremented and any result dialog is shown
+
+  void noButtonPressed(BuildContext context) async {
+    if (!(_selectedOption is NoSelected)) {
+      _selectNo();
+    }
+    else {
+      if (_currentEncounter.disagreeResultText != null) {
+        await showResultDialog(
+          context,
+          _currentEncounter.disagreeResultText,
+        );
+      }
+      adventureLogic.incrementAdventure(false);
+    }
+  }
+
+  void yesButtonPressed(BuildContext context) async {
+    if (!(_selectedOption is YesSelected)) {
+      _selectYes();
+    }
+    else {
+      if (_currentEncounter.agreeResultText != null) {
+        await showResultDialog(
+          context,
+          _currentEncounter.agreeResultText,
+        );
+      }
+      adventureLogic.incrementAdventure(true);
+    }
+  }
+
+  // Method to show a pop-up dialog with a specified text
+  Future<void> showResultDialog(BuildContext context, String result) async {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(
+          result,
+          style: Style.titleTextStyleBold,
+        ),
+      ),
+    );
+  }
+
+
+  void dispose() {
     _optionSelectedStream.close();
   }
 }
 
- 
-
 //Option selected types for stream that tracks whether an option has been selected
-abstract class OptionSelected{}
-class NothingSelected extends OptionSelected{}
+abstract class OptionSelected {}
+
+class NothingSelected extends OptionSelected {}
+
 class YesSelected extends OptionSelected {}
+
 class NoSelected extends OptionSelected {}

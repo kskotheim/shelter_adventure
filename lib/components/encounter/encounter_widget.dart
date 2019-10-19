@@ -9,7 +9,7 @@ class EncounterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     AdventureLogic adventureLogic = Provider.of<AdventureLogic>(context);
     EncounterLogic encounterLogic =
-        EncounterLogic(theAdventure: adventureLogic);
+        EncounterLogic(adventureLogic: adventureLogic);
 
     return Provider<EncounterLogic>(
       dispose: (context, _) => encounterLogic.dispose(),
@@ -29,14 +29,12 @@ class EncounterWidget extends StatelessWidget {
                       statWidget(
                         'Operations',
                         adventureLogic.theAdventure.var1,
-                        snapshot.data,
-                        adventureLogic.currentEncounter.resultsSortedByVar[0],
+                        encounterLogic.statModificationTextWidgets[0],
                       ),
                       statWidget(
                         'Animals',
                         adventureLogic.theAdventure.var2,
-                        snapshot.data,
-                        adventureLogic.currentEncounter.resultsSortedByVar[1],
+                        encounterLogic.statModificationTextWidgets[1],
                       ),
                     ],
                   ),
@@ -46,17 +44,17 @@ class EncounterWidget extends StatelessWidget {
                       statWidget(
                         'Community',
                         adventureLogic.theAdventure.var3,
-                        snapshot.data,
-                        adventureLogic.currentEncounter.resultsSortedByVar[2],
+                        encounterLogic.statModificationTextWidgets[2],
                       ),
                       statWidget(
                         'Personal',
                         adventureLogic.theAdventure.var4,
-                        snapshot.data,
-                        adventureLogic.currentEncounter.resultsSortedByVar[3],
+                        encounterLogic.statModificationTextWidgets[3],
                       ),
                     ],
                   ),
+
+                  // The current encounter text
                   Padding(
                     padding: const EdgeInsets.all(18.0),
                     child: Text(
@@ -64,6 +62,8 @@ class EncounterWidget extends StatelessWidget {
                       style: Style.subTitleTextStyle,
                     ),
                   ),
+
+                  // The yes button
                   Container(
                     decoration: (snapshot.data is YesSelected)
                         ? BoxDecoration(border: Border.all())
@@ -74,27 +74,12 @@ class EncounterWidget extends StatelessWidget {
                         style: Style.subTitleTextStyle,
                         textAlign: TextAlign.center,
                       ),
-                      onPressed: () async {
-                        // check if this option is not yet selected
-                        if (!(snapshot.data is YesSelected)) {
-                          encounterLogic.selectYes();
-                        }
-                        // otherwise go ahead
-                        else {
-                          if (adventureLogic.currentEncounter.agreeResultText !=
-                              null) {
-                            await showResultDialog(
-                              context,
-                              adventureLogic.currentEncounter.agreeResultText,
-                            );
-                          }
-                          adventureLogic.incrementAdventure(true);
-                        }
-                      },
+                      onPressed: () => encounterLogic.yesButtonPressed(context),
                     ),
                   ),
+
+                  // The no button
                   Container(
-                    // add a border if no is selected
                     decoration: (snapshot.data is NoSelected)
                         ? BoxDecoration(border: Border.all())
                         : null,
@@ -103,25 +88,7 @@ class EncounterWidget extends StatelessWidget {
                         adventureLogic.currentEncounter.disagreeText,
                         style: Style.subTitleTextStyle,
                       ),
-                      onPressed: () async {
-                        // check if this option is not yet selected
-                        if (!(snapshot.data is NoSelected)) {
-                          encounterLogic.selectNo();
-                        }
-                        // otherwise go ahead
-                        else {
-                          if (adventureLogic
-                                  .currentEncounter.disagreeResultText !=
-                              null) {
-                            await showResultDialog(
-                              context,
-                              adventureLogic
-                                  .currentEncounter.disagreeResultText,
-                            );
-                          }
-                          adventureLogic.incrementAdventure(false);
-                        }
-                      },
+                      onPressed: () => encounterLogic.noButtonPressed(context),
                     ),
                   ),
                 ],
@@ -131,38 +98,17 @@ class EncounterWidget extends StatelessWidget {
     );
   }
 
-  // the stat widgets display the values of the current adventure stats 
+  // the stat widgets display the values of the current adventure stats
   // as well as any modifications from selected choices, if a choice is selected
   Widget statWidget(
-    String title,
-    num statValue,
-    OptionSelected selectedOption,
-    List<num> effectsList,
-  ) {
-    String displayString = statValue.toStringAsFixed(1);
-    Text modificationText;
-    if (!(selectedOption is NothingSelected)) {
-      if (selectedOption is YesSelected) {
-        num effect = effectsList[0] ?? '';
-        if (effect != 0) {
-          if (effect > 0) {
-            modificationText = Text(' + ${effect.toStringAsPrecision(1)}', style: Style.subTitleTextStyleGreen,);
-          } else {
-            modificationText = Text(' - ${effect.abs().toStringAsPrecision(1)}', style: Style.subTitleTextStyleRed,);
-          }
-        }
-      }
-      if (selectedOption is NoSelected) {
-        num effect = effectsList[1];
-        if (effect != 0) {
-          if (effect > 0) {
-            modificationText = Text(' + ${effect.toStringAsPrecision(1)}', style: Style.subTitleTextStyleGreen,);
-          } else {
-            modificationText = Text(' - ${effect.abs().toStringAsPrecision(1)}', style: Style.subTitleTextStyleRed,);
-          }
-        }
-      }
-    }
+      String title, double statValue, Text modificationText) {
+
+    Text statText = Text(
+      statValue.toStringAsFixed(1),
+      textAlign: TextAlign.center,
+      style: Style.subTitleTextStyle,
+    );
+
     return Container(
       decoration: Style.statWidgetDecoration,
       padding: Style.statWidgetPadding,
@@ -172,11 +118,7 @@ class EncounterWidget extends StatelessWidget {
           Container(
             child: Row(
               children: <Widget>[
-                Text(
-                  displayString,
-                  textAlign: TextAlign.center,
-                  style: Style.subTitleTextStyle,
-                ),
+                statText,
                 modificationText != null ? modificationText : Container(),
               ],
             ),
@@ -191,18 +133,6 @@ class EncounterWidget extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Future<void> showResultDialog(BuildContext context, String result) async {
-    return showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(
-          result,
-          style: Style.titleTextStyleBold,
-        ),
       ),
     );
   }
