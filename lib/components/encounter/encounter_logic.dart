@@ -47,39 +47,29 @@ class EncounterLogic {
     if (!(_selectedOption is NothingSelected)) {
       statModificationTextWidgets = [null, null, null, null];
       for (int i = 0; i < 4; i++) {
-        if (_selectedOption is YesSelected) {
-          num effect = _resultsSortedByVar[i][0] ?? '';
-          if (effect != 0) {
-            if (effect > 0) {
-              //if modification is positive, add a green text widget
-              statModificationTextWidgets[i] = Text(
-                ' + ${effect.toString()}',
-                style: Style.subTitleTextStyleGreen,
-              );
-            } else {
-              //if it is negative, add a red text widget
-              statModificationTextWidgets[i] = Text(
-                ' - ${effect.abs().toString()}',
-                style: Style.subTitleTextStyleRed,
-              );
-            }
-          }
+        num effect = _resultsSortedByVar[i][_selectedOption is YesSelected ? 0 : 1];
+        String symbol = '+';
+        TextStyle textStyle = Style.subTitleTextStyleGreen;
+        if (effect < 0) {
+          symbol = '-';
+          effect = effect.abs();
+          textStyle = Style.subTitleTextStyleRed;
         }
-        if (_selectedOption is NoSelected) {
-          num effect = _resultsSortedByVar[i][1];
-          if (effect != 0) {
-            if (effect > 0) {
-              statModificationTextWidgets[i] = Text(
-                ' + ${effect.toString()}',
-                style: Style.subTitleTextStyleGreen,
-              );
-            } else {
-              statModificationTextWidgets[i] = Text(
-                ' - ${effect.abs().toString()}',
-                style: Style.subTitleTextStyleRed,
-              );
-            }
-          }
+        if (effect > 19) {
+          statModificationTextWidgets[i] = Text(
+            ' ' + symbol + symbol + symbol,
+            style: textStyle,
+          );
+        } else if (effect > 9) {
+          statModificationTextWidgets[i] = Text(
+            ' ' + symbol + symbol,
+            style: textStyle,
+          );
+        } else if (effect > 0) {
+          statModificationTextWidgets[i] = Text(
+            ' ' + symbol,
+            style: textStyle,
+          );
         }
       }
     }
