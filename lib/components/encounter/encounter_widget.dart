@@ -15,7 +15,7 @@ class EncounterWidget extends StatelessWidget {
       dispose: (context, _) => encounterLogic.dispose(),
       builder: (context) => encounterLogic,
       child: Container(
-        height: MediaQuery.of(context).size.height * .8,
+        height: Style.adventureWidgetSize(context),
         child: StreamBuilder<OptionSelected>(
             stream: encounterLogic.optionSelected,
             builder: (context, snapshot) {
@@ -56,7 +56,7 @@ class EncounterWidget extends StatelessWidget {
 
                   // The current encounter text
                   Padding(
-                    padding: const EdgeInsets.all(18.0),
+                    padding: Style.currentEncounterTextPadding,
                     child: Text(
                       adventureLogic.currentEncounter.text,
                       style: Style.subTitleTextStyle,
@@ -66,7 +66,7 @@ class EncounterWidget extends StatelessWidget {
                   // The yes button
                   Container(
                     decoration: (snapshot.data is YesSelected)
-                        ? BoxDecoration(border: Border.all())
+                        ? Style.borderBoxDecoration
                         : null,
                     child: FlatButton(
                       child: Text(
@@ -81,7 +81,7 @@ class EncounterWidget extends StatelessWidget {
                   // The no button
                   Container(
                     decoration: (snapshot.data is NoSelected)
-                        ? BoxDecoration(border: Border.all())
+                        ? Style.borderBoxDecoration
                         : null,
                     child: FlatButton(
                       child: Text(
@@ -123,9 +123,9 @@ class EncounterWidget extends StatelessWidget {
               ],
             ),
           ),
-          Container(height: 10.0),
+          Container(height: Style.distanceBetweenDescriptionAndStats),
           Container(
-            width: 80.0,
+            width: Style.widthOfStatDescriptionBox,
             child: Text(
               title,
               style: Style.descriptionTextStyle,

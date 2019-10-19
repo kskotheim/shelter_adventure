@@ -27,22 +27,39 @@ class AdventurePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       Container(),
-                      Text('Game Over', style: Style.titleTextStyleBold,),
+                      Text(
+                        'Game Over',
+                        style: Style.titleTextStyleBold,
+                      ),
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Text('Result:', style: Style.titleTextStyleBold,),
-                          Text('Operations: ${logic.theAdventure.var1.toStringAsFixed(2)}', style: Style.subTitleTextStyle),
-                          Text('Animals: ${logic.theAdventure.var2.toStringAsFixed(2)}', style: Style.subTitleTextStyle),
-                          Text('Community: ${logic.theAdventure.var3.toStringAsFixed(2)}', style: Style.subTitleTextStyle),
-                          Text('Personal: ${logic.theAdventure.var4.toStringAsFixed(2)}', style: Style.subTitleTextStyle),
+                          Text(
+                            'Result:',
+                            style: Style.titleTextStyleBold,
+                          ),
+                          Text(
+                              'Operations: ${logic.theAdventure.var1.toStringAsFixed(2)}',
+                              style: Style.subTitleTextStyle),
+                          Text(
+                              'Animals: ${logic.theAdventure.var2.toStringAsFixed(2)}',
+                              style: Style.subTitleTextStyle),
+                          Text(
+                              'Community: ${logic.theAdventure.var3.toStringAsFixed(2)}',
+                              style: Style.subTitleTextStyle),
+                          Text(
+                              'Personal: ${logic.theAdventure.var4.toStringAsFixed(2)}',
+                              style: Style.subTitleTextStyle),
                         ],
                       ),
                       Container(
-                        decoration: BoxDecoration(border: Border.all()),
+                        decoration: Style.borderBoxDecoration,
                         child: FlatButton(
                           onPressed: logic.newAdventure,
-                          child: Text('New Adventure', style: Style.subTitleTextStyle,),
+                          child: Text(
+                            'New Adventure',
+                            style: Style.subTitleTextStyle,
+                          ),
                         ),
                       ),
                     ],
@@ -54,17 +71,7 @@ class AdventurePage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          width: MediaQuery.of(context).size.width *
-                              snapshot.data.pctOver,
-                          height: 30.0,
-                          color: Style.progressColor,
-                        ),
-                      ],
-                    ),
-                    
+                    GameProgressRow(pctOver: snapshot.data.pctOver,),
                     EncounterWidget(),
                   ],
                 );
@@ -73,5 +80,23 @@ class AdventurePage extends StatelessWidget {
       ),
     );
   }
+}
 
+class GameProgressRow extends StatelessWidget {
+  final pctOver;
+
+  GameProgressRow({this.pctOver});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width * pctOver,
+          height: Style.progressRowHeight,
+          color: Style.progressColor,
+        ),
+      ],
+    );
+  }
 }
