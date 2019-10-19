@@ -65,8 +65,8 @@ class EncounterWidget extends StatelessWidget {
 
                   // The yes button
                   Container(
-                    decoration: (snapshot.data is YesSelected)
-                        ? Style.borderBoxDecoration
+                    color: (snapshot.data is YesSelected)
+                        ? Color(0xFFFFFFFF)
                         : null,
                     child: FlatButton(
                       child: Text(
@@ -80,8 +80,8 @@ class EncounterWidget extends StatelessWidget {
 
                   // The no button
                   Container(
-                    decoration: (snapshot.data is NoSelected)
-                        ? Style.borderBoxDecoration
+                    color: (snapshot.data is NoSelected)
+                        ? Color(0xFFFFFFFF)
                         : null,
                     child: FlatButton(
                       child: Text(
