@@ -16,20 +16,20 @@ class AdventureLogic {
     theAdventure = Adventure();
     numberOfTurns = 0;
     currentEncounter = getRandomEncounter();
-    _updateAdventure();
+    updateAdventure();
   }
 
   AdventureLogic({this.theAdventure}) {
     if (theAdventure == null) theAdventure = Adventure();
     currentEncounter = getRandomEncounter();
-    _updateAdventure();
+    updateAdventure();
   }
 
   StreamController<Adventure> _adventureStreamController =
       StreamController<Adventure>();
 
   Stream<Adventure> get adventureStream => _adventureStreamController.stream;
-  void _updateAdventure() => _adventureStreamController.sink.add(theAdventure);
+  void updateAdventure() => _adventureStreamController.sink.add(theAdventure);
 
   void incrementAdventure(bool agreeToProposition) {
     // depending on the proposition, and whether the user agrees,
@@ -56,7 +56,7 @@ class AdventureLogic {
       //generate a new encounter
       currentEncounter = getRandomEncounter();
     }
-    _updateAdventure();
+    updateAdventure();
   }
 
   void dispose() {

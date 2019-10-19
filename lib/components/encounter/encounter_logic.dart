@@ -1,8 +1,13 @@
 import 'dart:async';
 
+import 'package:shelter_adventure/components/adventure/adventure_logic.dart';
+
 class EncounterLogic {
 
-  EncounterLogic(){
+  final AdventureLogic theAdventure;
+
+  EncounterLogic({this.theAdventure}){
+    assert(theAdventure != null);
     _optionSelectedStream.sink.add(NothingSelected());
   }
 
@@ -15,6 +20,8 @@ class EncounterLogic {
     _optionSelectedStream.close();
   }
 }
+
+ 
 
 //Option selected types for stream that tracks whether an option has been selected
 abstract class OptionSelected{}
