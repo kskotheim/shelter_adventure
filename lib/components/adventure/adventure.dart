@@ -10,26 +10,26 @@ class Adventure {
   double pctOver = 0.0;
 
   // the underscore means a variable is private
-  double _var1;
-  double _var2;
-  double _var3;
-  double _var4;
+  int _var1;
+  int _var2;
+  int _var3;
+  int _var4;
 
   // public getter methods so the variables can be accessed, but not modified directly, from outsie of this class
-  double get var1 => _var1;
-  double get var2 => _var2;
-  double get var3 => _var3;
-  double get var4 => _var4;
+  int get var1 => _var1;
+  int get var2 => _var2;
+  int get var3 => _var3;
+  int get var4 => _var4;
 
   // the constructor
   Adventure({this.numberOfTurnsUntilEnd}) {
     if (numberOfTurnsUntilEnd == null) {
       numberOfTurnsUntilEnd = 10;
     }
-    _var1 = 0.5;
-    _var2 = 0.5;
-    _var3 = 0.5;
-    _var4 = 0.5;
+    _var1 = 50;
+    _var2 = 50;
+    _var3 = 50;
+    _var4 = 50;
   }
 
   //variable modification is permitted through method calls

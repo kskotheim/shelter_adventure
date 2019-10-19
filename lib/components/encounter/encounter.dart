@@ -24,18 +24,18 @@ class Encounter {
   }) {
     if (agreeEffect == null) {
       agreeEffect = [
-        _random.nextDouble() - .5,
-        _random.nextDouble() - .5,
-        _random.nextDouble() - .5,
-        _random.nextDouble() - .5,
+        _random.nextInt(11) - 6,
+        _random.nextInt(11) - 6,
+        _random.nextInt(11) - 6,
+        _random.nextInt(11) - 6,
       ];
     }
     if (disagreeEffect == null) {
       disagreeEffect = [
-        _random.nextDouble() - .5,
-        _random.nextDouble() - .5,
-        _random.nextDouble() - .5,
-        _random.nextDouble() - .5,
+        _random.nextInt(11) - 6,
+        _random.nextInt(11) - 6,
+        _random.nextInt(11) - 6,
+        _random.nextInt(11) - 6,
       ];
     }
   }

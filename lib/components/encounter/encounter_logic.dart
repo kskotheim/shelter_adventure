@@ -53,13 +53,13 @@ class EncounterLogic {
             if (effect > 0) {
               //if modification is positive, add a green text widget
               statModificationTextWidgets[i] = Text(
-                ' + ${effect.toStringAsPrecision(1)}',
+                ' + ${effect.toString()}',
                 style: Style.subTitleTextStyleGreen,
               );
             } else {
               //if it is negative, add a red text widget
               statModificationTextWidgets[i] = Text(
-                ' - ${effect.abs().toStringAsPrecision(1)}',
+                ' - ${effect.abs().toString()}',
                 style: Style.subTitleTextStyleRed,
               );
             }
@@ -70,12 +70,12 @@ class EncounterLogic {
           if (effect != 0) {
             if (effect > 0) {
               statModificationTextWidgets[i] = Text(
-                ' + ${effect.toStringAsPrecision(1)}',
+                ' + ${effect.toString()}',
                 style: Style.subTitleTextStyleGreen,
               );
             } else {
               statModificationTextWidgets[i] = Text(
-                ' - ${effect.abs().toStringAsPrecision(1)}',
+                ' - ${effect.abs().toString()}',
                 style: Style.subTitleTextStyleRed,
               );
             }

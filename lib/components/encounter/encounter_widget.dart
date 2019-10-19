@@ -101,10 +101,10 @@ class EncounterWidget extends StatelessWidget {
   // the stat widgets display the values of the current adventure stats
   // as well as any modifications from selected choices, if a choice is selected
   Widget statWidget(
-      String title, double statValue, Text modificationText) {
+      String title, int statValue, Text modificationText) {
 
     Text statText = Text(
-      statValue.toStringAsFixed(1),
+      statValue.toString(),
       textAlign: TextAlign.center,
       style: Style.subTitleTextStyle,
     );

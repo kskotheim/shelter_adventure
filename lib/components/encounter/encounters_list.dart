@@ -7,24 +7,24 @@ final List<Encounter> encounters = [
       agreeText: 'accept the gophers services',
       agreeResultText: 'you agreed',
       disagreeResultText: 'you disagreed',
-      agreeEffect: [.1, .1, -.05, -.05],
-      disagreeEffect: [0, 0, .1, 0],
+      agreeEffect: [10, 10, -5, -5],
+      disagreeEffect: [0, 0, 10, 0],
     ),
     Encounter(
       text:
           'Two neighborhood cats ambush you in the alley and demand pets, or else',
       agreeResultText: 'you agreed',
       disagreeResultText: 'you disagreed',
-      agreeEffect: [0, 0, .05, .05],
-      disagreeEffect: [.2, 0, -.1, 0],
+      agreeEffect: [0, 0, 5, 5],
+      disagreeEffect: [20, 0, -10, 0],
     ),
     Encounter(
       text:
           'You are overcome with a sudden compulsion to dig a big hole in the back yard',
       agreeResultText: 'you agreed',
       disagreeResultText: 'you disagreed',
-      agreeEffect: [.1, 0, -.05, .05],
-      disagreeEffect: [.2, -.2, -.1, .2],
+      agreeEffect: [10, 0, -5, 5],
+      disagreeEffect: [20, -20, -10, 20],
     ),
     Encounter(text: 'Your cat reminds you that it is time for breakfast'),
     Encounter(
