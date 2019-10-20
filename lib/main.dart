@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shelter_adventure/components/adventure/adventure_page.dart';
+import 'package:shelter_adventure/components/game/game_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Shelter Adventure',
-      home: AdventurePage(),
+      home: GamePage(),
     );
   }
 }

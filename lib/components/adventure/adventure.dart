@@ -1,9 +1,6 @@
 // this class represents the state of the current game
 
 class Adventure {
-  // static Adventure _theAdventure = Adventure();
-  // Adventure get theAdventure => _theAdventure;
-  // void newAdventure() => _theAdventure = Adventure();
 
   int numberOfTurnsUntilEnd;
   bool adventureOver = false;
@@ -15,13 +12,13 @@ class Adventure {
   int _var3;
   int _var4;
 
-  // public getter methods so the variables can be accessed, but not modified directly, from outsie of this class
+  // public getter methods
   int get var1 => _var1;
   int get var2 => _var2;
   int get var3 => _var3;
   int get var4 => _var4;
 
-  // the constructor
+  // Adventure constructor
   Adventure({this.numberOfTurnsUntilEnd}) {
     if (numberOfTurnsUntilEnd == null) {
       numberOfTurnsUntilEnd = 10;
@@ -32,9 +29,9 @@ class Adventure {
     _var4 = 50;
   }
 
-  //variable modification is permitted through method calls
-  void incrementVar1(num x) => _var1 += x;
-  void incrementVar2(num x) => _var2 += x;
-  void incrementVar3(num x) => _var3 += x;
-  void incrementVar4(num x) => _var4 += x;
+  // methods to modify stat variables
+  void incrementVar1(int x) => _var1 += x;
+  void incrementVar2(int x) => _var2 += x;
+  void incrementVar3(int x) => _var3 += x;
+  void incrementVar4(int x) => _var4 += x;
 }
