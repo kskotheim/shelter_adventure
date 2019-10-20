@@ -25,6 +25,14 @@ class TitleScreen extends StatelessWidget {
               child: Text('New Game', style: Style.subTitleTextStyle,),
               onPressed: gameLogic.showGameScreen,
             ),
+            FlatButton(
+              child: Text('Inventory', style: Style.subTitleTextStyle,),
+              onPressed: gameLogic.showInventory,
+            ),
+            FlatButton(
+              child: Text('Shop', style: Style.subTitleTextStyle,),
+              onPressed: gameLogic.showShop,
+            ),
           ],
         ),
       ),

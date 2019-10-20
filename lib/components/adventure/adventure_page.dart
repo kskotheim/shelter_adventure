@@ -4,13 +4,14 @@ import 'package:shelter_adventure/components/adventure/adventure.dart';
 import 'package:shelter_adventure/components/adventure/adventure_logic.dart';
 import 'package:shelter_adventure/components/encounter/encounter_widget.dart';
 import 'package:shelter_adventure/components/adventure/game_over.dart';
+import 'package:shelter_adventure/components/game/game_logic.dart';
 import 'package:shelter_adventure/util/style.dart';
 
 class AdventurePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     AdventureLogic logic = AdventureLogic();
+    GameLogic gameLogic = Provider.of<GameLogic>(context);
     return Scaffold(
       backgroundColor: Style.backgroundColor,
       body: Provider<AdventureLogic>(
@@ -32,6 +33,12 @@ class AdventurePage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: gameLogic.inventory.equippedItems
+                          .map((item) => Text("${item.name}  "))
+                          .toList(),
+                    ),
                     GameProgressRow(
                       pctOver: snapshot.data.pctOver,
                     ),

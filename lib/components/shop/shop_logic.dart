@@ -1,0 +1,7 @@
+class ShopLogic{
+
+
+  void dispose() {
+    
+  }
+}
