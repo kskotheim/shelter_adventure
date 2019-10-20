@@ -39,16 +39,16 @@ class AdventurePage extends StatelessWidget {
                             style: Style.titleTextStyleBold,
                           ),
                           Text(
-                              'Operations: ${logic.theAdventure.var1.toStringAsFixed(2)}',
+                              'Operations: ${logic.theAdventure.var1}',
                               style: Style.subTitleTextStyle),
                           Text(
-                              'Animals: ${logic.theAdventure.var2.toStringAsFixed(2)}',
+                              'Animals: ${logic.theAdventure.var2}',
                               style: Style.subTitleTextStyle),
                           Text(
-                              'Community: ${logic.theAdventure.var3.toStringAsFixed(2)}',
+                              'Community: ${logic.theAdventure.var3}',
                               style: Style.subTitleTextStyle),
                           Text(
-                              'Personal: ${logic.theAdventure.var4.toStringAsFixed(2)}',
+                              'Personal: ${logic.theAdventure.var4}',
                               style: Style.subTitleTextStyle),
                         ],
                       ),
