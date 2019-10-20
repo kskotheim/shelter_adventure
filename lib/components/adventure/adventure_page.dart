@@ -10,8 +10,8 @@ import 'package:shelter_adventure/util/style.dart';
 class AdventurePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    AdventureLogic logic = AdventureLogic();
     GameLogic gameLogic = Provider.of<GameLogic>(context);
+    AdventureLogic logic = AdventureLogic(gameLogic: gameLogic);
     return Scaffold(
       backgroundColor: Style.backgroundColor,
       body: Provider<AdventureLogic>(

@@ -28,18 +28,18 @@ final List<Item> theItems = [
     itemId: '2',
     name: 'Rotary Phone',
     effectString: 'Bonus +20 starting Operations score',
-    additiveBonus: [0,20,0,0],
+    additiveBonus: [20,0,0,0],
   ),
   Item(
     itemId: '3',
     name: 'Bowl of Candy',
     effectString: 'Bonus +20 starting Community score',
-    additiveBonus: [0,20,0,0],
+    additiveBonus: [0,0,20,0],
   ),
   Item(
     itemId: '4',
     name: 'Yo-Yo',
     effectString: 'Bonus +20 starting Personal score',
-    additiveBonus: [0,20,0,0],
+    additiveBonus: [0,0,0,20],
   ),
 ];

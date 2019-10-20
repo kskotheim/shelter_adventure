@@ -28,12 +28,12 @@ class EncounterWidget extends StatelessWidget {
                     children: <Widget>[
                       statWidget(
                         'Operations',
-                        adventureLogic.theAdventure.var1,
+                        adventureLogic.theAdventure.var0,
                         encounterLogic.statModificationTextWidgets[0],
                       ),
                       statWidget(
                         'Animals',
-                        adventureLogic.theAdventure.var2,
+                        adventureLogic.theAdventure.var1,
                         encounterLogic.statModificationTextWidgets[1],
                       ),
                     ],
@@ -43,12 +43,12 @@ class EncounterWidget extends StatelessWidget {
                     children: <Widget>[
                       statWidget(
                         'Community',
-                        adventureLogic.theAdventure.var3,
+                        adventureLogic.theAdventure.var2,
                         encounterLogic.statModificationTextWidgets[2],
                       ),
                       statWidget(
                         'Personal',
-                        adventureLogic.theAdventure.var4,
+                        adventureLogic.theAdventure.var3,
                         encounterLogic.statModificationTextWidgets[3],
                       ),
                     ],
