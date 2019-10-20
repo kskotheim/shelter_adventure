@@ -49,33 +49,34 @@ final List<Encounter> encounters = [
       agreeEffect: [-6, 8, 8, -4],
       disagreeEffect: [5, 0, -10, 10]),
   Encounter(
-    text: 'You have a grant application to finish, by tomorrow, but you have tickets to go see a big rock band. The concert starts in an hour.',
-    agreeText: 'Leave the paperwork for tomorrow',
-    disagreeText: 'Stay and finish the paperwork',
-    agreeResultText: 'Tomorrow is really busy and it doesn\'t get done',
-    disagreeResultText: 'Your friends have a great time at the concert',
-    agreeEffect: [-13, 0, 0, 20],
-    disagreeEffect: [12, 12, 0, -16]
-  ),
+      text:
+          'You have a grant application to finish, by tomorrow, but you have tickets to go see a big rock band. The concert starts in an hour.',
+      agreeText: 'Leave the paperwork for tomorrow',
+      disagreeText: 'Stay and finish the paperwork',
+      agreeResultText: 'Tomorrow is really busy and it doesn\'t get done',
+      disagreeResultText: 'Your friends have a great time at the concert',
+      agreeEffect: [-13, 0, 0, 20],
+      disagreeEffect: [12, 12, 0, -16]),
   Encounter(
     text:
         'Your phone rings. It is the mayor. He wants you to adopt a crocodile he says was found in a pool.',
-        agreeText: 'Get the bathtub ready',
-        disagreeText: 'Tell the mayor politely that is ridiculous and that he\'ll have to come up with a better plan',
-        agreeResultText: 'The food bill goes up significantly, and the mayor boasts of brokering the deal at a campaign speech.',
-        disagreeResultText: 'The crocodile is sent to florida at taxpayer expense',
-        agreeEffect: [-25, 15, 25, -12],
-        disagreeEffect: [6, -5, -10, 12],
+    agreeText: 'Get the bathtub ready',
+    disagreeText:
+        'Tell the mayor politely that is ridiculous and that he\'ll have to come up with a better plan',
+    agreeResultText:
+        'The food bill goes up significantly, and the mayor boasts of brokering the deal at a campaign speech.',
+    disagreeResultText: 'The crocodile is sent to florida at taxpayer expense',
+    agreeEffect: [-25, 15, 25, -12],
+    disagreeEffect: [6, -5, -10, 12],
   ),
   Encounter(
-    text: 'The neighbors ask if you can look after their rabbits',
-    agreeText: 'Tell them no problem',
-    disagreeText: 'Freeze in place and don\'t respond to their questions',
-    agreeResultText: 'The rabbits are irritable',
-    disagreeResultText: 'They give you a strange look as they leave',
-    agreeEffect: [-6, 8, 11, -2],
-    disagreeEffect: [7, -1, -12, 10]
-  ),
+      text: 'The neighbors ask if you can look after their rabbits',
+      agreeText: 'Tell them no problem',
+      disagreeText: 'Freeze in place and don\'t respond to their questions',
+      agreeResultText: 'The rabbits are irritable',
+      disagreeResultText: 'They give you a strange look as they leave',
+      agreeEffect: [-6, 8, 11, -2],
+      disagreeEffect: [7, -1, -12, 10]),
   Encounter(
     text:
         'A dirty, disoriented person walks into the shelter, and asks for help finding their way home.',
@@ -96,5 +97,49 @@ final List<Encounter> encounters = [
     disagreeResultText: 'The kennels are a little bit quieter.',
     agreeEffect: [16, 0, -2, 0],
     disagreeEffect: [-4, 0, 4, 5],
+  ),
+  Encounter(
+    text:
+        'The fire chief calls and asks if you might have any Dalmatians they can rent for a fundraiser event. ',
+    agreeText:
+        'Get the sharpie and all your white short-haired dogs ready for showtime',
+    disagreeText: 'Offer him all your mutts for free instead',
+    agreeResultText: 'The fundraiser is a big success. Everyone was fooled. ',
+    disagreeResultText:
+        'Two dogs find forever homes. The dogs stole the show and the fire department didn\'t raise any money.',
+    agreeEffect: [2, 4, 4, -2],
+    disagreeEffect: [0, 13, -5, 0],
+  ),
+  Encounter(
+    text: 'The sausages you were about to eat are missing from your desk.',
+    agreeText: 'Order a sandwich from the deli instead',
+    disagreeText: 'Line the dogs up and see who looks the most guilty',
+    agreeResultText:
+        'You ask for no pickle, but you get pickle. You suspect it was intentional. ',
+    disagreeResultText: 'You are unable to locate the sausage thief.',
+    agreeEffect: [3, 5, 0, -2],
+    disagreeEffect: [-4, 1, 0, 3],
+  ),
+  Encounter(
+    text:
+        'Your biscuit supplier has decided to quit the industry and go to college to pursue a career in international relations.',
+    agreeText: 'Wish her luck in all future endevors',
+    disagreeText: 'Try to talk her out of it',
+    agreeResultText: 'Ten years later she becomes the ambassador to Finland. ',
+    disagreeResultText: 'She is not convinced, but seems shaken by your words',
+    agreeEffect: [0, -1, 7, 0],
+    disagreeEffect: [0, 0, 0, 0],
+  ),
+  Encounter(
+    text:
+        'Wiley the weasel, a local radio personality and real-life weasel, is brought in by DJ Mike. In a hushed tone, he explains, well ... Wiley\'s poop has been smelling kind of funny recently',
+    agreeText: 'Get Wiley on a diet of carrots and cabbage',
+    disagreeText: 'Tell Mike you have real problems to solve',
+    agreeResultText:
+        'Wiley is back on air the next morning, squeaky as ever and apparently irritated by local drivers',
+    disagreeResultText:
+        'You work efficiently for the rest of the afternoon. On the radio the next morning, Wiley sounds bloated and un-energetic. ',
+    agreeEffect: [-3, 3, 6, 0],
+    disagreeEffect: [9, -2, -5, 3],
   ),
 ];
