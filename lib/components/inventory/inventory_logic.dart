@@ -49,9 +49,11 @@ class InventoryLogic {
 
   Function get saveInventory => _saveInventory;
 
-  // these methods are for test buttons
+  // these methods are for test buttons to unlock or reset the list of unlocked items
   void resetUnlockedItemsButtonPressed() {
     gameLogic.inventory.unlockedItemIds = List<String>.from(Inventory.BASE_UNLOCKED_INVENTORY);
+    gameLogic.inventory.equippedItemIds = [];
+    gameLogic.inventory.inventorySize = Inventory.BASE_INVENTORY_SIZE;
     saveInventory();
     updateInventory(gameLogic.inventory);
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shelter_adventure/components/adventure/adventure_page.dart';
+import 'package:shelter_adventure/components/challenge/challenge_page.dart';
 import 'package:shelter_adventure/components/game/game_logic.dart';
 import 'package:shelter_adventure/components/game/title_screen.dart';
 import 'package:shelter_adventure/components/inventory/inventory_page.dart';
@@ -36,6 +37,9 @@ class GamePage extends StatelessWidget {
             }
             if (snapshot.data is GameStateLoading) {
               return LoadingScreen();
+            }
+            if(snapshot.data is GameStateChallenges) {
+              return ChallengePage();
             }
           }),
     );

@@ -12,6 +12,7 @@ class GameLogic{
   void showTitleScreen() => _gameStateController.sink.add(GameStateTitleScreen());
   void showGameScreen() => _gameStateController.sink.add(GameStatePlaying());
   void showInventory() => _gameStateController.sink.add(GameStateInventory());
+  void showChallenges() => _gameStateController.sink.add(GameStateChallenges());
   void showShop() => _gameStateController.sink.add(GameStateShop());
 
   SharedPrefsManager _sharedPrefs;
@@ -49,5 +50,7 @@ class GameStatePlaying extends GameState{}
 class GameStateShop extends GameState{}
 
 class GameStateInventory extends GameState{}
+
+class GameStateChallenges extends GameState{}
 
 class GameStateLoading extends GameState{}
