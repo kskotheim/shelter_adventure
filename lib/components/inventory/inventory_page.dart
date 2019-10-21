@@ -70,7 +70,22 @@ class InventoryPage extends StatelessWidget {
                     FlatButton(
                       child: Text('Title'),
                       onPressed: gameLogic.showTitleScreen,
-                    )
+                    ),
+                    
+                    // buttons for testing
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        FlatButton(
+                          child: Text('unlock all items'),
+                          onPressed: inventoryLogic.unlockAllItemsButtonPressed,
+                        ),
+                        FlatButton(
+                          child: Text('reset unlocked items'),
+                          onPressed: inventoryLogic.resetUnlockedItemsButtonPressed,
+                        )
+                      ],
+                    ),
                   ],
                 );
               }),

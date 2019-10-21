@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:shelter_adventure/components/game/game_logic.dart';
 import 'package:shelter_adventure/components/inventory/inventory.dart';
+import 'package:shelter_adventure/components/inventory/item_list.dart';
 import 'package:shelter_adventure/util/repository.dart';
 
 class InventoryLogic {
@@ -44,6 +45,20 @@ class InventoryLogic {
     if (_prefs != null) {
       _prefs.setInventory(gameLogic.inventory.toString());
     }
+  }
+
+  Function get saveInventory => _saveInventory;
+
+  // these methods are for test buttons
+  void resetUnlockedItemsButtonPressed() {
+    gameLogic.inventory.unlockedItemIds = List<String>.from(Inventory.BASE_UNLOCKED_INVENTORY);
+    saveInventory();
+    updateInventory(gameLogic.inventory);
+  }
+
+  void unlockAllItemsButtonPressed() {
+    theItems.forEach((item) => unlockItem(item.itemId));
+    updateInventory(gameLogic.inventory);
   }
 
   void dispose() {
