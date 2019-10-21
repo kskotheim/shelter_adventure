@@ -17,6 +17,8 @@ class GameLogic{
   SharedPrefsManager _sharedPrefs;
   Inventory _inventory;
   Inventory get inventory => _inventory;
+  bool inventoryContains(String id) => _inventory.equippedItemIds.contains(id);
+  bool unlockedItemsContains(String id) => _inventory.unlockedItemIds.contains(id);
 
   GameLogic(){
     showLoadingScreen();

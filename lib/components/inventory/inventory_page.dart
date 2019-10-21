@@ -4,6 +4,7 @@ import 'package:shelter_adventure/components/game/game_logic.dart';
 import 'package:shelter_adventure/components/inventory/inventory.dart';
 import 'package:shelter_adventure/components/inventory/inventory_logic.dart';
 import 'package:shelter_adventure/components/inventory/item_list.dart';
+import 'package:shelter_adventure/util/style.dart';
 
 class InventoryPage extends StatelessWidget {
   @override
@@ -27,29 +28,44 @@ class InventoryPage extends StatelessWidget {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
+                    
+                    Container(),
+
                     Text('Inventory:'),
 
-                    // a list of equipped items
-                    Text('Equipped Items: '),
                     Column(
                       mainAxisSize: MainAxisSize.min,
-                      children: equippedItems,
-                    ),
+                      children: <Widget>[
+                        Text('Equipped Items: '),
+                        Text(
+                            '${gameLogic.inventory.equippedItemIds.length} / ${gameLogic.inventory.inventorySize}'),
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: equippedItems,
+                        ),
 
+                        Container(),
+
+                      ],
+                    ),
                     // a list of all the items
                     Column(
                       children: <Widget>[
                         Text('Items:'),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: List<Widget>.from(theItems
-                              .map((item) => ItemSelectionTile(
-                                    item: item,
-                                  ))
-                              .toList()),
+                        Container(
+                          height: Style.itemListSize(context),
+                          child: ListView(
+                            children: List<Widget>.from(theItems
+                                .map((item) => ItemSelectionTile(
+                                      item: item,
+                                    ))
+                                .toList()),
+                          ),
                         ),
                       ],
                     ),
+
+                    // a list of equipped items
 
                     FlatButton(
                       child: Text('Title'),
@@ -74,9 +90,12 @@ class ItemSelectionTile extends StatelessWidget {
     InventoryLogic inventoryLogic = Provider.of<InventoryLogic>(context);
     GameLogic gameLogic = Provider.of<GameLogic>(context);
     return ListTile(
-      title: Text(item.name),
-      subtitle: Text(item.effectString),
-      trailing: gameLogic.inventory.equippedItemIds.contains(item.itemId)
+      title: Text(
+          gameLogic.unlockedItemsContains(item.itemId) ? item.name : '???'),
+      subtitle: Text(gameLogic.unlockedItemsContains(item.itemId)
+          ? item.effectString
+          : '???'),
+      trailing: gameLogic.inventoryContains(item.itemId)
           ? Icon(
               Icons.check,
               color: Colors.green,

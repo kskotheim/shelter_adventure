@@ -23,6 +23,9 @@ class Style {
   // size of main adventure widget
   static double adventureWidgetSize(BuildContext context) => MediaQuery.of(context).size.height * .8;
 
+  // size of full item list in inventory page
+  static double itemListSize(BuildContext context) => MediaQuery.of(context).size.height * .4;
+
   // large and small text style
   static final TextStyle titleTextStyleBold = TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold);
   static final TextStyle subTitleTextStyle = TextStyle(fontSize: 20.0);

@@ -14,7 +14,7 @@ class InventoryLogic {
   }
 
   void _getSharedPrefs() async {
-    _prefs= await SharedPrefsManager.getInstance();
+    _prefs = await SharedPrefsManager.getInstance();
   }
 
   StreamController<Inventory> _inventoryController =
@@ -24,17 +24,24 @@ class InventoryLogic {
       _inventoryController.sink.add(inventory);
 
   void itemButtonPressed(String itemId) {
-    if (!gameLogic.inventory.equippedItemIds.contains(itemId)) {
-      gameLogic.inventory.equipItem(itemId);
-    } else {
-      gameLogic.inventory.unequipItem(itemId);
+    if (gameLogic.unlockedItemsContains(itemId)) {
+      if (!gameLogic.inventoryContains(itemId)) {
+        gameLogic.inventory.equipItem(itemId);
+      } else {
+        gameLogic.inventory.unequipItem(itemId);
+      }
+      _saveInventory();
+      updateInventory(gameLogic.inventory);
     }
+  }
+
+  void unlockItem(String itemId) {
+    gameLogic.inventory.unlockItem(itemId);
     _saveInventory();
-    updateInventory(gameLogic.inventory);
   }
 
   void _saveInventory() async {
-    if(_prefs != null){
+    if (_prefs != null) {
       _prefs.setInventory(gameLogic.inventory.toString());
     }
   }

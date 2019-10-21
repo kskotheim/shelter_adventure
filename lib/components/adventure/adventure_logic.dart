@@ -29,6 +29,7 @@ class AdventureLogic {
     for(int i=0; i<4; i++){
       theAdventure.incrementVar(i, item.additiveBonus[i]);
       totalMultiplicitiveBonus[i] *= item.multiplicitiveBonus[i];
+      theAdventure.numberOfTurnsUntilEnd += item.bonusTurns;
     }
   }
 
