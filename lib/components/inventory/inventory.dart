@@ -14,17 +14,21 @@ class Inventory {
   static const int BASE_INVENTORY_SIZE = 3;
   static const List<String> BASE_UNLOCKED_INVENTORY = ['1', '2', '3', '4'];
 
-
-  int inventorySize = BASE_INVENTORY_SIZE;
-  List<String> equippedItemIds = [];
+  int inventorySize;
+  List<String> equippedItemIds;
   List<Item> get equippedItems => equippedItemIds
       .map((id) => theItems.where((item) => item.itemId == id).toList()[0])
       .toList();
 
-  List<String> unlockedItemIds = BASE_UNLOCKED_INVENTORY;
-  
+  List<String> unlockedItemIds;
 
-  Inventory({this.inventorySize, this.equippedItemIds, this.unlockedItemIds});
+  Inventory({
+    this.inventorySize = BASE_INVENTORY_SIZE,
+    this.unlockedItemIds = BASE_UNLOCKED_INVENTORY,
+    this.equippedItemIds,
+  }) {
+    if (equippedItemIds == null) equippedItemIds = List<String>();
+  }
 
   void setInventorySize(int newSize) => inventorySize = newSize;
   
