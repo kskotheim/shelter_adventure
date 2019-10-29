@@ -142,4 +142,143 @@ final List<Encounter> encounters = [
     agreeEffect: [-3, 3, 6, 0],
     disagreeEffect: [9, -2, -5, 3],
   ),
+  Encounter(text: 'A crotchety dog comes into the shelter with a scrawled note tucked in his collar: "kurst prints - pleez kiss"',
+    agreeText: 'Smooch that pooch!',
+    disagreeText: 'Maybe just a little hug instead',
+    agreeResultText: 'The dog\'s arthritis clears up in the blink of an eye. He thanks you with the keys to his father\'s castle... actually just spits out a milk bone for you.',
+    disagreeResultText: 'The dog\'s eyes bulge, and he tries to squirm away.',
+    agreeEffect: [0, 1, -4, 0],
+    disagreeEffect: [0, -5, 0, 3],
+  ),
+  Encounter(text: 'STICK \'EM UP!',
+    agreeText: 'Empty the register',
+    disagreeText: 'Run out the back',
+    agreeResultText: 'You dole out the cash and the robber swiftly departs.',
+    disagreeResultText: 'The cash is relatively safe, but the steals all the decorations from your front office!',
+    agreeEffect: [-5, 0, 0, -2],
+    disagreeEffect: [0, 0, -1, -8],
+  ),
+  Encounter(text: 'There is broken glass and the front door is wide open this morning.',
+    agreeText: 'Clean up from the robbery and get on with things.',
+    disagreeText: 'Clean up, and try to solve the crime yourself!',
+    agreeResultText: 'The morning is shot, but you get most of your work done for the day.',
+    disagreeResultText: 'You clip on your sleuthing bonnet and spend the day follow the trail of kibble to the house of a former adopter! The news story goes viral!',
+    agreeEffect: [-3, 0, 4, -5],
+    disagreeEffect: [-7, 0, 16, -1],
+  ),
+  Encounter(text: 'A high-volume shelter can transfer 50 dogs to you, but it has to be all or none.',
+    agreeText: 'The more, the hairier!',
+    disagreeText: 'No room at the Rin Tint Inn',
+    agreeResultText: 'It seems like every time you clean something up, there\'s suddenly two more to take its place.',
+    disagreeResultText: 'It\'s actually kind of quite in here today.',
+    agreeEffect: [-10, 15, 4, -4],
+    disagreeEffect: [5, -1, 0, 3],
+  ),
+  Encounter(text: 'An employee has been chronically late to work',
+    agreeText: 'Ask them to come in much, much later.',
+    disagreeText: 'Explain why it\'s important to be on time',
+    agreeResultText: 'They are confused by your phrasing, and it takes several minutes of explanation before they understand that you are firing them.',
+    disagreeResultText: 'They clean up their act over the next few weeks. ',
+    agreeEffect: [1, 4, 0, -8],
+    disagreeEffect: [1, 0, 0, 0],
+  ),
+  Encounter(text: 'Oh no! The computers are down, and you can\'t process adoptions or look up which dogs need medication!',
+    agreeText: 'Use paper and copy everything back into the computer later',
+    disagreeText: 'Hold off on adoptions for now',
+    agreeResultText: 'You get more animals into their forever homes, but it a lot more work too.',
+    agreeEffect: [-18, 3, 1, 0],
+    disagreeEffect: [4, -3, -4, 1],
+  ),
+  Encounter(text: 'The power is out!',
+    agreeText: 'Buy a generator',
+    disagreeText: 'Evacuate',
+    agreeResultText: 'That was a shockingly good idea.',
+    disagreeResultText: 'You set up shop in an abandoned warehouse across town.',
+    agreeEffect: [-1, 10, 0, 0],
+    disagreeEffect: [0, 10, 0, -3],
+  ),
+  Encounter(text: 'No customers come in today. How do you spend the extra time?',
+    agreeText: 'Cleaning',
+    disagreeText: 'Writing grants',
+    agreeResultText: 'Spot never looked so spotless!',
+    disagreeResultText: 'You get all the dough you knead.',
+    agreeEffect: [0, 17, 0, 5],
+    disagreeEffect: [6, 0, 1, 0],
+  ),
+  Encounter(text: 'You find a field of catnip in the forest. Do you keep it for the shelter cats or sell it, to buy less-recreational supplies.',
+    agreeText: 'Every cat deservse a little break',
+    disagreeText: 'Let\'s get kibble before we go crazy',
+    agreeResultText: 'The resulting videos are what the internet is all about. It\'s social media gold!',
+    disagreeResultText: 'With a level head and an even keel, you steer the ship toward gradual prosperity.',
+    agreeEffect: [-3, 0, 26, 0],
+    disagreeEffect: [13, 3, 0, 0],
+  ),
+  Encounter(text: 'Time for fundraising!',
+    agreeText: 'Bake sale',
+    disagreeText: 'Raffle',
+    agreeResultText: 'The muffins sell like hot cakes!',
+    disagreeResultText: 'You make a lot of business connections while soliciting donations.',
+    agreeEffect: [5, 1, 0, 0],
+    disagreeEffect: [0, 0, 6, 0],
+  ),
+  /*
+  enrichment seminar, go or not (bring staff?)
+an employee is stealing meds
+a donation of 1001 x-large dog beds
+running low on kibble, spend money or spend time asking the public
+giardia
+parvo
+kennel cough
+few animals, get a new van load or do extra throrough cleaning
+it’s kitten season! spend extra on expensive vets or wait to find cheaper spay appointments?
+volunteer orientation
+need landscaping
+need a new roof - money is tight
+a member of the public hides in the shleter after hours!
+one of the dogs is actually a dire wolf
+the shelter cat has been picking people’s pockets
+someone lost a love letter, only first names, do you advertise to get it back to them?
+can you take in a “stray” mountain lion?
+a dog brings in a “stray” cat, but you suspect the dog is just getting rid of the other pets in the house
+You see an alum on the street. Say hello?
+Animal rescued from dumpster. Do you name it, Oscar or Diver?
+A former felon wants to adopt
+Adopter wants to haggle over price - don’t get sucked in!
+A meteor strikes nearby. investigate (alien tech food dispenser), or call for help (government cordons off area, mystery grant money…)
+New dogs are so tiny, the slip out of kennels. buy aquariums?
+The AI in your phone would like to adopt a cat
+Newly arrived cat needs dental work. Fundraise via social media? Or fundraise via letters?
+You get a haircut. Barber won’t stop talking, then follows you around town.
+You go to buy kitty litter, but get lost in the back country for days. go north, go south, go bcak
+Would you like to take a snake charming class?
+Dog hypnosis? They are very well trained, but it wears off quickly after adoption :(
+Driving to the vet’s office, you are lost. Stop to check map, or just try the next exit.
+This is actually a tiger cub / lion / wolf
+Do you go on an expidition to find the elephant graveyard?
+The governor is looking for a new dog and stops in!
+The axis of the earth’s gravity is off by 14 degrees inside the shelter. Tourism or perpetual motion?
+Inside one of the kennels, you discover a portal to a dimension where everything is made of kibble
+You find a cache of diamonds. One of the cats is a burglar!
+Ants have infested the food. Do battle, or bargain with their queen?
+You discover that one of the dog bowls turns dogs into puppies. Do you dare drink from it?
+The security cameras have been failing at night 3:33am. Do you sleep over? It’s a ghost!!!!
+Someone wants to buy a dog as a christmas present
+Do you want enter a dog-o-thon race for charity?
+A ghostly flying pirate ship descends onto the parking lot, and the captain demands cats. Call the cops, or buckle his swash?
+Geologists have discovered a tiny active volcano next door. Move the shelter?
+A geyser forms in the dog run. Tourism or thermal power?
+The rats in the attic wear tiny robes and worship the statue of a cat god
+You find a cell phone in a kennel. One of the dogs runs a side business as a bookie.
+While petting a cat, a genie pours forth! Do you dare make some wishes?
+Do you allow a field trip from the elementary school? (kid tries to steal a puppy)
+A witch is looking for a new familiar. Tell her to leave (face discrimination laws). Help (the whole coven ends up adopting here!)
+The annual gala fundraiser. How much effort to put in? balance personal life and shelter profit
+Busy day 4:55pm. Time for one more adoption? balance personal life and animal wellbeing
+Animals are goin buggy. Spend time calming them, or an earthquake hits?
+A musketeer cat demands to know why you run a prison
+An old tome with a dog obedience spell
+Best trainer in the world retires, donate (magical?) clicker. Sell, use at shelter, get famous?
+One of the cats claims to actually be a raccoon. Let them go?
+Spay appointment. Wait for cheaper vet. Book expensive vet now.
+  */
 ];
