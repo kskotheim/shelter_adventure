@@ -24,10 +24,11 @@ class Inventory {
 
   Inventory({
     this.inventorySize = BASE_INVENTORY_SIZE,
-    this.unlockedItemIds = BASE_UNLOCKED_INVENTORY,
+    this.unlockedItemIds,
     this.equippedItemIds,
   }) {
     if (equippedItemIds == null) equippedItemIds = List<String>();
+    if (unlockedItemIds == null) unlockedItemIds = List<String>.from(BASE_UNLOCKED_INVENTORY);
   }
 
   void setInventorySize(int newSize) => inventorySize = newSize;

@@ -28,10 +28,11 @@ class InventoryPage extends StatelessWidget {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    
                     Container(),
 
                     Text('Inventory:'),
+
+                    Text('${gameLogic.currency} biscuits'),
 
                     Column(
                       mainAxisSize: MainAxisSize.min,
@@ -43,9 +44,7 @@ class InventoryPage extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: equippedItems,
                         ),
-
                         Container(),
-
                       ],
                     ),
                     // a list of all the items
@@ -71,7 +70,7 @@ class InventoryPage extends StatelessWidget {
                       child: Text('Title'),
                       onPressed: gameLogic.showTitleScreen,
                     ),
-                    
+
                     // buttons for testing
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -82,7 +81,8 @@ class InventoryPage extends StatelessWidget {
                         ),
                         FlatButton(
                           child: Text('reset unlocked items'),
-                          onPressed: inventoryLogic.resetUnlockedItemsButtonPressed,
+                          onPressed:
+                              inventoryLogic.resetUnlockedItemsButtonPressed,
                         )
                       ],
                     ),
@@ -115,7 +115,9 @@ class ItemSelectionTile extends StatelessWidget {
               Icons.check,
               color: Colors.green,
             )
-          : null,
+          : !gameLogic.unlockedItemsContains(item.itemId)
+              ? Text(item.costToUnlock.toString())
+              : null,
       onTap: () => inventoryLogic.itemButtonPressed(item.itemId),
     );
   }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:shelter_adventure/components/adventure/adventure.dart';
+import 'package:shelter_adventure/components/challenge/challenge.dart';
 import 'package:shelter_adventure/components/encounter/encounter.dart';
 import 'package:shelter_adventure/components/encounter/encounters_list.dart';
 import 'package:shelter_adventure/components/game/game_logic.dart';
@@ -15,6 +16,7 @@ class AdventureLogic {
   Random _random = Random();
   int numberOfTurns = 0;
   List<double> totalMultiplicitiveBonus = [1.0, 1.0, 1.0, 1.0];
+  List<Challenge> challengesAchieved;
 
   AdventureLogic({this.theAdventure, this.gameLogic}) {
     assert(gameLogic != null);
@@ -62,6 +64,18 @@ class AdventureLogic {
     if (numberOfTurns >= theAdventure.numberOfTurnsUntilEnd) {
       // end adventure ...
       theAdventure.adventureOver = true;
+      // calculate challenges achieved ...
+      challengesAchieved = [];
+      int totalReward = 0;
+      theChallenges.forEach((challenge){
+        if(theAdventure.var0 >= challenge.minScores[0] && theAdventure.var1 >= challenge.minScores[1] && theAdventure.var2 >= challenge.minScores[2] && theAdventure.var3 >= challenge.minScores[3]){
+          //challenge achieved
+          challengesAchieved.add(challenge);
+          totalReward += challenge.reward;
+        }
+      });
+      gameLogic.addCurrency(totalReward);
+
     } else {
       //generate a new encounter
       currentEncounter = getRandomEncounter();

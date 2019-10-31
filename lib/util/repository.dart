@@ -41,7 +41,7 @@ class SharedPrefsManager {
   }
 
   int getCurrency() {
-    return _preferences.getInt(_CURRENCY_KEY) ?? '';
+    return _preferences.getInt(_CURRENCY_KEY) ?? 0;
   }
 
   

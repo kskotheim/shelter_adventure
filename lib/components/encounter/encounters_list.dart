@@ -50,7 +50,7 @@ final List<Encounter> encounters = [
       disagreeEffect: [5, 0, -10, 10]),
   Encounter(
       text:
-          'You have a grant application to finish, by tomorrow, but you have tickets to go see a big rock band. The concert starts in an hour.',
+          'You have a grant application to finish by tomorrow, but you have tickets to go see a big rock band. The concert starts in an hour.',
       agreeText: 'Leave the paperwork for tomorrow',
       disagreeText: 'Stay and finish the paperwork',
       agreeResultText: 'Tomorrow is really busy and it doesn\'t get done',

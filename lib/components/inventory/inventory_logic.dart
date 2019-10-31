@@ -33,6 +33,13 @@ class InventoryLogic {
       }
       _saveInventory();
       updateInventory(gameLogic.inventory);
+    } else {
+      Item item = theItems.singleWhere((item) => item.itemId == itemId);
+      if(gameLogic.currency >= item.costToUnlock){
+        gameLogic.addCurrency(-1 * item.costToUnlock);
+        unlockItem(itemId);
+        updateInventory(gameLogic.inventory);
+      }
     }
   }
 

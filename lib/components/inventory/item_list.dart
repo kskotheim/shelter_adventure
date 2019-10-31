@@ -7,6 +7,7 @@ class Item {
   final List<double> multiplicitiveBonus;
   final int bonusTurns;
   final int bonusInventory;
+  final int costToUnlock;
 
   Item({
     this.itemId,
@@ -15,7 +16,8 @@ class Item {
     this.additiveBonus = const [0, 0, 0, 0],
     this.multiplicitiveBonus = const [1.0, 1.0, 1.0, 1.0],
     this.bonusTurns = 0,
-    this.bonusInventory = 0
+    this.bonusInventory = 0,
+    this.costToUnlock = 25,
   }) : assert(itemId != null);
 }
 

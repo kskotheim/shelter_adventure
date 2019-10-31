@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shelter_adventure/components/adventure/adventure_logic.dart';
@@ -17,6 +16,31 @@ class GameOverPage extends StatelessWidget {
         Text(
           'Game Over',
           style: Style.titleTextStyleBold,
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: adventureLogic.challengesAchieved.map(
+            (challenge) {
+              return Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Container(
+                  padding: EdgeInsets.all(5.0),
+                  height: 60.0,
+                  width: 100.0,
+                  decoration: BoxDecoration(borderRadius:BorderRadius.circular(12.0), color: Colors.yellow.shade100),
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text(challenge.name, style: TextStyle(fontSize: 12.0),),
+                        Text('+${challenge.reward.toString()} Biscuits')
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ).toList(),
         ),
         Column(
           mainAxisSize: MainAxisSize.min,

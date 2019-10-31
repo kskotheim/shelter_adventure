@@ -3,13 +3,14 @@ import 'dart:async';
 import 'package:shelter_adventure/components/inventory/inventory.dart';
 import 'package:shelter_adventure/util/repository.dart';
 
-class GameLogic{
-
-  StreamController<GameState> _gameStateController = StreamController<GameState>();
+class GameLogic {
+  StreamController<GameState> _gameStateController =
+      StreamController<GameState>();
   Stream<GameState> get gameState => _gameStateController.stream;
 
   void showLoadingScreen() => _gameStateController.sink.add(GameStateLoading());
-  void showTitleScreen() => _gameStateController.sink.add(GameStateTitleScreen());
+  void showTitleScreen() =>
+      _gameStateController.sink.add(GameStateTitleScreen());
   void showGameScreen() => _gameStateController.sink.add(GameStatePlaying());
   void showInventory() => _gameStateController.sink.add(GameStateInventory());
   void showChallenges() => _gameStateController.sink.add(GameStateChallenges());
@@ -19,9 +20,17 @@ class GameLogic{
   Inventory _inventory;
   Inventory get inventory => _inventory;
   bool inventoryContains(String id) => _inventory.equippedItemIds.contains(id);
-  bool unlockedItemsContains(String id) => _inventory.unlockedItemIds.contains(id);
+  bool unlockedItemsContains(String id) =>
+      _inventory.unlockedItemIds.contains(id);
 
-  GameLogic(){
+  int _currency;
+  int get currency => _currency;
+  void addCurrency(int add) {
+    _currency += add;
+    _sharedPrefs.setCurrency(_currency);
+  }
+
+  GameLogic() {
     showLoadingScreen();
     getInventory();
   }
@@ -30,27 +39,27 @@ class GameLogic{
   void getInventory() async {
     _sharedPrefs = await SharedPrefsManager.getInstance();
     _inventory = Inventory.fromString(_sharedPrefs.getInventory());
+    _currency = _sharedPrefs.getCurrency() ?? 0;
+
     showTitleScreen();
   }
 
-  void dispose(){
+  void dispose() {
     _gameStateController.close();
   }
-
 }
 
-
 // classes to represent the state the game is in (title screen, playing, item shop)
-class GameState{}
+class GameState {}
 
-class GameStateTitleScreen extends GameState{}
+class GameStateTitleScreen extends GameState {}
 
-class GameStatePlaying extends GameState{}
+class GameStatePlaying extends GameState {}
 
-class GameStateShop extends GameState{}
+class GameStateShop extends GameState {}
 
-class GameStateInventory extends GameState{}
+class GameStateInventory extends GameState {}
 
-class GameStateChallenges extends GameState{}
+class GameStateChallenges extends GameState {}
 
-class GameStateLoading extends GameState{}
+class GameStateLoading extends GameState {}
