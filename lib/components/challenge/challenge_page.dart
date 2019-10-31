@@ -22,10 +22,10 @@ class ChallengePage extends StatelessWidget {
                           title: Text(challenge.name),
                           subtitle: Text(challenge.description),
                           leading: Container(
-                            height: 25.0,
-                            width: 25.0,
+                            height: 35.0,
+                            width: 35.0,
                             decoration: BoxDecoration(border: Border.all()),
-                            child: Center(child: Text(challenge.reward.toString())),
+                            child: Center(child: Text("+${challenge.reward}")),
                           ),
                         ))
                     .toList(),

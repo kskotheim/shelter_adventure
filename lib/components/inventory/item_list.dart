@@ -77,6 +77,7 @@ final List<Item> theItems = [
     effectString: '+50 and 50% bonus to Operations',
     additiveBonus: [50, 0, 0, 0],
     multiplicitiveBonus: [1.5, 1.0, 1.0, 1.0],
+    costToUnlock: 125,
   ),
   Item(
     itemId: '10',
@@ -84,6 +85,7 @@ final List<Item> theItems = [
     effectString: '+50 and 50% bonus to Animals',
     additiveBonus: [0, 50, 0, 0],
     multiplicitiveBonus: [1.0, 1.5, 1.0, 1.0],
+    costToUnlock: 125,
   ),
   Item(
     itemId: '11',
@@ -91,6 +93,7 @@ final List<Item> theItems = [
     effectString: '+50 and 50% bonus to Community',
     additiveBonus: [0, 0, 50, 0],
     multiplicitiveBonus: [1.0, 1.0, 1.5, 1.0],
+    costToUnlock: 125,
   ),
   Item(
     itemId: '12',
@@ -98,42 +101,48 @@ final List<Item> theItems = [
     effectString: '+50 and 50% bonus to Personal',
     additiveBonus: [0, 0, 0, 50],
     multiplicitiveBonus: [1.0, 1.0, 1.0, 1.5],
+    costToUnlock: 125,
   ),
   Item(
     itemId: '13',
     name: 'Fanny Pack',
     effectString: '+2 to inventory size',
-    bonusInventory: 2
+    bonusInventory: 2,
+    costToUnlock: 250,
   ),
   Item(
     itemId: '14',
     name: 'Big Fanny Pack',
     effectString: '+3 to inventory size',
-    bonusInventory: 3
+    bonusInventory: 3,
+    costToUnlock: 500,
   ),
   Item(
     itemId: '15',
     name: 'Magic Flute',
     effectString: '+4 bonus turns',
-    bonusTurns: 4
+    bonusTurns: 4,
+    costToUnlock: 500,
   ),
   Item(
     itemId: '16',
     name: 'Magic Fiddle',
     effectString: '+6 bonus turns',
-    bonusTurns: 6
+    bonusTurns: 6,
+    costToUnlock: 800,
   ),
-
   Item(
     itemId: '17',
     name: 'Crystal Ball',
     effectString: '+100 bonus to all stats',
     additiveBonus: [100, 100, 100, 100],
+    costToUnlock: 1000,
   ),
   Item(
     itemId: '18',
     name: 'Dark Crystal Ball',
     effectString: '+300% bonus to all effects',
     multiplicitiveBonus: [3.0, 3.0, 3.0, 3.0],
+    costToUnlock: 3000,
   ),
 ];

@@ -70,6 +70,11 @@ class InventoryLogic {
     updateInventory(gameLogic.inventory);
   }
 
+  void fiftyBiscuitsButtonPressed() {
+    gameLogic.addCurrency(50);
+    updateInventory(gameLogic.inventory);
+  }
+
   void dispose() {
     _inventoryController.close();
   }

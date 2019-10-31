@@ -83,7 +83,11 @@ class InventoryPage extends StatelessWidget {
                           child: Text('reset unlocked items'),
                           onPressed:
                               inventoryLogic.resetUnlockedItemsButtonPressed,
-                        )
+                        ),
+                        FlatButton(
+                          child: Text('Fifty Biscuits'),
+                          onPressed: inventoryLogic.fiftyBiscuitsButtonPressed,
+                        ),
                       ],
                     ),
                   ],
