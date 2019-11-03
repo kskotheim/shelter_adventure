@@ -27,6 +27,8 @@ final List<Encounter> encounters = [
     text: 'There are ants in the break room',
     agreeText: 'Get the vacuum',
     disagreeText: 'Let them be - you have work to do',
+    agreeResultText: 'Vrooooom!',
+    disagreeResultText: 'The little one stops to tie its shoe',
     agreeEffect: [4, 0, 0, 0],
     disagreeEffect: [12, 0, 0, -8],
   ),
@@ -221,27 +223,99 @@ final List<Encounter> encounters = [
     agreeEffect: [5, 1, 0, 0],
     disagreeEffect: [0, 0, 6, 0],
   ),
+  Encounter(text: 'You plan to attend an enrichment seminar. How many other staff members do you bring?',
+    agreeText: 'Just me!',
+    disagreeText: 'Whoever wants to come!',
+    agreeResultText: 'You learn plenty, and enjoy a working vacation.',
+    disagreeResultText: 'You all split up, so you can attend more talks. ',
+    agreeEffect: [4, 0, 0, 9],
+    disagreeEffect: [25, 0, 0, -4],
+  ),
+  Encounter(text: 'An employee has been stealing meds',
+    agreeText: 'Fire them',
+    disagreeText: 'Fire them and involve the police',
+    agreeResultText: 'They\'re out of your hair, at least.',
+    disagreeResultText: 'Some tough love was necessary, and it turns out they had been stealing from all sorts of places around town. You stopped a crime wave!',
+    agreeEffect: [2, 5, 0, -2],
+    disagreeEffect: [-2, 3, 16, -1],
+  ),
+  Encounter(text: 'The Duranda dog bed company just donated 1,001 extra-large dog beds. What a windfall!',
+    agreeText: 'Free bed with every adoption',
+    disagreeText: 'Sell them',
+    agreeResultText: 'You pay it forward. Everyone\'s a winner in this snooze fest!',
+    disagreeResultText: 'You roll out of bed each day and wonder if you\'ll ever be able to roll out all those beds. Eventually, you do. Ka-ching!',
+    agreeEffect: [0, 6, 18, 0],
+    disagreeEffect: [28, 0, 0, 0],
+  ),
+  Encounter(text: 'You\'re running low on kibble.',
+    agreeText: 'Purchase kibble',
+    disagreeText: 'Solicit donations from the public',
+    agreeResultText: 'You swap that cheddar for chow... der. Wait, that\'s not right. You trade that bread for biscuits... not quite. You spend that dough on doggy din din... close enough.',
+    disagreeResultText: 'You spend time drawing on your greatest resource, the community. And they come through with all the cans and bags you need for quite a while. ',
+    agreeEffect: [-5, 4, 0, 0],
+    disagreeEffect: [5, 0, -2, -1],
+  ),
+  Encounter(text: 'There are very few animals in the shelter right now.',
+    agreeText: 'Arrange for a van load from other crowded shelters',
+    disagreeText: 'Take a few extra days for some top-to-bottom cleaning',
+    agreeResultText: 'Your contacts are relieved to get your help. And the new puppies and kitties are so dang CUTE!',
+    disagreeResultText: 'It really gets everywhere, doesn\'t it?',
+    agreeEffect: [-12, 7, 4, 0],
+    disagreeEffect: [19, -16, 0, 5],
+  ),
+  Encounter(text: 'It’s kitten season! So it\'s a lot like that episode of Star Trek with tribbles.',
+    agreeText: 'Get them spayed and neutered ASAP',
+    disagreeText: 'Wait for cheaper appointments',
+    agreeResultText: 'It costs plenty more, but you can also adopt them out sooner.',
+    disagreeResultText: 'Their tenure drums up a lot of interest. Every one of them finds a purrfect-fit forever home!',
+    agreeEffect: [2, 5, 0, 0],
+    disagreeEffect: [-4, 16, 4, 0],
+  ),
+  Encounter(text: 'The motion detectors go off at night. You discover a member of the public was hiding in the shleter after hours!',
+    agreeText: 'Ask why',
+    disagreeText: 'Wait and watch on the security cameras',
+    agreeResultText: '"If you must be nosy. The kennel looked cozy. And then I got doze-y! Does that answer your posey?"',
+    disagreeResultText: 'They bump their way to the front office, directly to the donation box... into which they stuff a fat roll of bennies!',
+    agreeEffect: [0, 0, 0, 20],
+    disagreeEffect: [26, 0, 0, 0],
+  ),
+  Encounter(text: 'The most playful little tortoise shell kitty was rescued from a garbage bin. What name do you choose?',
+    agreeText: 'Oscar',
+    disagreeText: 'Diver',
+    agreeResultText: 'This kitty is no grouch, but that\'s certainly a tale worth telling.',
+    disagreeResultText: 'Diver goes on to have a fulfilling career in coral reef conservation.',
+    agreeEffect: [0, 4, 0, 1],
+    disagreeEffect: [0, 4, 0, 4],
+  ),
+  Encounter(text: 'You see an alum on the street. Do you say hello?',
+    agreeText: 'Howdy paw-rdner!',
+    disagreeText: 'Maybe just a nod in passing.',
+    agreeResultText: 'You are mistaken, and the owner is a real jerk about it! They seem to think it\'s insulting that their "purebred" looks anything like a shelter dog.',
+    disagreeResultText: 'You make eye-contact, and Sbarky remembers you! She pulls at the leash to get some pets. You learn that her new name is Elephant, or Ellie for short.',
+    agreeEffect: [0, 0, -3, -3],
+    disagreeEffect: [0, 0, 3, 1],
+  ),
+  Encounter(text: 'Someone wants to buy a puppy as a Christmas present for their kid',
+    agreeText: 'Srsly...? no.',
+    disagreeText: 'Ok, but you know you\'ll be doing all the work',
+    agreeResultText: 'You wisely decline to adopt to someone with unrealistic expectations.',
+    disagreeResultText: 'They bring the puppy back in February when it starts teething. Jerk.',
+    agreeEffect: [0, 4, 0, 3],
+    disagreeEffect: [0, -3, 0, 0],
+  ),
+
+
+];
   /*
-  enrichment seminar, go or not (bring staff?)
-an employee is stealing meds
-a donation of 1001 x-large dog beds
-running low on kibble, spend money or spend time asking the public
-giardia
-parvo
-kennel cough
-few animals, get a new van load or do extra throrough cleaning
-it’s kitten season! spend extra on expensive vets or wait to find cheaper spay appointments?
+
 volunteer orientation
 need landscaping
 need a new roof - money is tight
-a member of the public hides in the shleter after hours!
 one of the dogs is actually a dire wolf
 the shelter cat has been picking people’s pockets
 someone lost a love letter, only first names, do you advertise to get it back to them?
 can you take in a “stray” mountain lion?
 a dog brings in a “stray” cat, but you suspect the dog is just getting rid of the other pets in the house
-You see an alum on the street. Say hello?
-Animal rescued from dumpster. Do you name it, Oscar or Diver?
 A former felon wants to adopt
 Adopter wants to haggle over price - don’t get sucked in!
 A meteor strikes nearby. investigate (alien tech food dispenser), or call for help (government cordons off area, mystery grant money…)
@@ -262,7 +336,6 @@ You find a cache of diamonds. One of the cats is a burglar!
 Ants have infested the food. Do battle, or bargain with their queen?
 You discover that one of the dog bowls turns dogs into puppies. Do you dare drink from it?
 The security cameras have been failing at night 3:33am. Do you sleep over? It’s a ghost!!!!
-Someone wants to buy a dog as a christmas present
 Do you want enter a dog-o-thon race for charity?
 A ghostly flying pirate ship descends onto the parking lot, and the captain demands cats. Call the cops, or buckle his swash?
 Geologists have discovered a tiny active volcano next door. Move the shelter?
@@ -281,4 +354,4 @@ Best trainer in the world retires, donate (magical?) clicker. Sell, use at shelt
 One of the cats claims to actually be a raccoon. Let them go?
 Spay appointment. Wait for cheaper vet. Book expensive vet now.
   */
-];
+
