@@ -303,6 +303,86 @@ final List<Encounter> encounters = [
     agreeEffect: [0, 4, 0, 3],
     disagreeEffect: [0, -3, 0, 0],
   ),
+  Encounter(text: 'After a few weeks, it seems that one of the puppies is actually a dire wolf.',
+    agreeText: 'Try to adopt it out real quick',
+    disagreeText: 'Undertake an arduous trek to the frozen north and return it to its natural habitat',
+    agreeResultText: 'Watching the channel 6 news a few months later, you are not proud of mayhem you caused.',
+    disagreeResultText: 'You find your old snow shoes and head out. Several weeks later, you return (buffer than ever) and hope that little Thor-Garden is hunting well on the ice shelf.',
+    agreeEffect: [5, 3, -4, -9],
+    disagreeEffect: [-7, 0, 4, 1],
+  ),
+  Encounter(text: 'A former felon wants to adopt',
+    agreeText: 'Yes... and?',
+    disagreeText: 'Maybe take a closer look at the application',
+    agreeResultText: 'A fluffy kitty finds a forever home, and the adopter starts to come by the shelter regularly to volunteer.',
+    disagreeResultText: 'Everything is in order, but you know that they know that you took a closer look. Awkward!',
+    agreeEffect: [1, 4, 0, 0],
+    disagreeEffect: [0, 0, -1, -4],
+  ),
+  Encounter(text: 'An adopter wants to haggle over price',
+    agreeText: 'Explain what the costs are',
+    disagreeText: 'Deny their adoption entirely!',
+    agreeResultText: 'You tabulate the prices for spaying, vaccines, microchipping... but don\'t realize you have been suckered in by a master haggler! Somehow you end up OWNING $27 for the adoption.',
+    disagreeResultText: 'A clever tactic. You are truly the haggliest of hagglers.',
+    agreeEffect: [-16, 1, 4, 1],
+    disagreeEffect: [5, 4, 0, 0],
+  ),
+  Encounter(text: 'A dog brings in a “stray” cat, but you suspect that the dog is just getting rid of its household competition.',
+    agreeText: 'Send Rover a-roving',
+    disagreeText: 'Accept that cat',
+    agreeResultText: 'The dog vows to avenge this insult to honor, no mater how many dog years it might take. Ominous!',
+    disagreeResultText: 'The cat is quite relieved to get out from under the thumb of its former housemate, and thrives in the company of other kitties.',
+    agreeEffect: [1, 0, -9, 0],
+    disagreeEffect: [0, 7, 0, 0],
+  ),
+  Encounter(text: 'Several people claim to have lost their wallet in the shelter recently. You check the cattery, and sure enough, one of the cats has been pilfering purses and waylaying wallets. This also explains the mysterious pallet of catnip that "no one" ordered.',
+    agreeText: 'Return the property',
+    disagreeText: 'Dispose of the property',
+    agreeResultText: 'The victims are grateful, but find your explanation very suspicious.',
+    disagreeResultText: 'You try to forget all about it, as you lock the felonious feline\'s cat condo. ',
+    agreeEffect: [8, 0, -13, 0],
+    disagreeEffect: [8, 0, -2, -3],
+  ),
+  Encounter(text: 'Can you take in a “stray” mountain lion?',
+    agreeText: 'Heck no!',
+    disagreeText: 'I\'ll try anything once!',
+    agreeResultText: 'Seems reasonable, but where\'s the adventure?',
+    disagreeResultText: 'You\'re a but flummoxed when you realize you need to find a way to adopt out your new charge. But no matter! After a few phone calls, you get the Matterhorn on the horn, and find that it is a mountain ready to adopt a lion. Rock on!',
+    agreeEffect: [0, 0, 0, 0],
+    disagreeEffect: [0, 4, 0, 4],
+  ),
+  Encounter(text: 'A newly arrived cat needs dental work.',
+    agreeText: 'Fundraise via social media',
+    disagreeText: 'Fundraise via snail mail',
+    agreeResultText: 'The purpose of the internet? Pictures of cats. Your success is swift and the dentistry deft.',
+    disagreeResultText: 'You attract enough attention after a few weeks, and pay for the operation. Meanwhile quite a few more retired folks come in to start volunteering.',
+    agreeEffect: [0, 15, 0, 0],
+    disagreeEffect: [1, 3, 3, 0],
+  ),
+  Encounter(text: 'You get a haircut, and the barber won’t stop talking the whole time. But then starts to follow you around town, showing up day after day.',
+    agreeText: 'Tell that barber to beat it!',
+    disagreeText: 'Wear a wig',
+    agreeResultText: 'Your not-so-subtle point is finally accepted, but not before you are the recipient of a surprise buzz cut!',
+    disagreeResultText: 'The barber eventually loses interest in looking for you, but laying low that long has taken its toll on your day-to-day.',
+    agreeEffect: [0, 0, 3, -15],
+    disagreeEffect: [-12, 0, 0, 1],
+  ),
+  Encounter(text: 'A geyser forms in the dog run.',
+    agreeText: 'Charge admission',
+    disagreeText: 'Harness its thermal energy',
+    agreeResultText: '"Old Faithful" is taken, but would be apropos for a geyser in a dog run. You settle on the name "Up Dog" and make a mint as the cash starts to splash.',
+    disagreeResultText: '"It\'s a different kind of harness than you are used to, but you now make so much electricity, the power company pays YOU!" --Yakov Smirnoff',
+    agreeEffect: [13, -1, 4, 0],
+    disagreeEffect: [19, -3, 0, 3],
+  ),
+  Encounter(text: 'The local college lists a snake charming class in their catalog. Are you the professor or a student?',
+    agreeText: 'Professor',
+    disagreeText: 'Student',
+    agreeResultText: 'It\'s great to stand up straight and get a second job. It generates extra cash for the shelter! but working two jobs leaves you limp.',
+    disagreeResultText: 'It\'s quite an enriching experience, and you find that the shelter cats\' tails are equally affected by your new skill!',
+    agreeEffect: [8, 0, 0, -14],
+    disagreeEffect: [0, 3, 4, 1],
+  ),
 
 
 ];
@@ -311,20 +391,11 @@ final List<Encounter> encounters = [
 volunteer orientation
 need landscaping
 need a new roof - money is tight
-one of the dogs is actually a dire wolf
-the shelter cat has been picking people’s pockets
 someone lost a love letter, only first names, do you advertise to get it back to them?
-can you take in a “stray” mountain lion?
-a dog brings in a “stray” cat, but you suspect the dog is just getting rid of the other pets in the house
-A former felon wants to adopt
-Adopter wants to haggle over price - don’t get sucked in!
 A meteor strikes nearby. investigate (alien tech food dispenser), or call for help (government cordons off area, mystery grant money…)
 New dogs are so tiny, the slip out of kennels. buy aquariums?
 The AI in your phone would like to adopt a cat
-Newly arrived cat needs dental work. Fundraise via social media? Or fundraise via letters?
-You get a haircut. Barber won’t stop talking, then follows you around town.
 You go to buy kitty litter, but get lost in the back country for days. go north, go south, go bcak
-Would you like to take a snake charming class?
 Dog hypnosis? They are very well trained, but it wears off quickly after adoption :(
 Driving to the vet’s office, you are lost. Stop to check map, or just try the next exit.
 This is actually a tiger cub / lion / wolf
@@ -339,7 +410,6 @@ The security cameras have been failing at night 3:33am. Do you sleep over? It’
 Do you want enter a dog-o-thon race for charity?
 A ghostly flying pirate ship descends onto the parking lot, and the captain demands cats. Call the cops, or buckle his swash?
 Geologists have discovered a tiny active volcano next door. Move the shelter?
-A geyser forms in the dog run. Tourism or thermal power?
 The rats in the attic wear tiny robes and worship the statue of a cat god
 You find a cell phone in a kennel. One of the dogs runs a side business as a bookie.
 While petting a cat, a genie pours forth! Do you dare make some wishes?
