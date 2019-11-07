@@ -322,7 +322,7 @@ final List<Encounter> encounters = [
   Encounter(text: 'An adopter wants to haggle over price',
     agreeText: 'Explain what the costs are',
     disagreeText: 'Deny their adoption entirely!',
-    agreeResultText: 'You tabulate the prices for spaying, vaccines, microchipping... but don\'t realize you have been suckered in by a master haggler! Somehow you end up OWNING $27 for the adoption.',
+    agreeResultText: 'You tabulate the prices for spaying, vaccines, microchipping... but don\'t realize you have been suckered in by a master haggler! Somehow you end up OWNING \$27 for the adoption.',
     disagreeResultText: 'A clever tactic. You are truly the haggliest of hagglers.',
     agreeEffect: [-16, 1, 4, 1],
     disagreeEffect: [5, 4, 0, 0],
@@ -383,6 +383,39 @@ final List<Encounter> encounters = [
     agreeEffect: [8, 0, 0, -14],
     disagreeEffect: [0, 3, 4, 1],
   ),
+  Encounter(text: 'One evening, a meteor strikes, making a crater in a clearing near the shelter.',
+    agreeText: 'Get over there right away',
+    disagreeText: 'Call the fire department',
+    agreeResultText: 'You clamber down and see the smoldering, cracked shell of a small space craft. While a examening silver and blue box, some large moves behind you. Creepy! You run for it, and later discover that the box dispenses an edible paste that the animals love!',
+    disagreeResultText: 'The clearing is quickly locked down by military vehicle and people in hazmat suits. There are no answers. But soon a large anonymous donation come to the shelter... and into you personal account too.',
+    agreeEffect: [25, 0, 0, 0],
+    disagreeEffect: [8, 0, 0, 5],
+  ),
+  Encounter(text: 'Let\'s try hypnosis!',
+    agreeText: 'Yes, on the dogs',
+    disagreeText: 'Yes, on the cats',
+    agreeResultText: 'They are very well trained at the shelter, but it wears off quickly after adoption.',
+    disagreeResultText: 'You find yourself opening yet another can of tuna, and wonder fleetingly where your great-grandfather\'s pocket watch is.',
+    agreeEffect: [13, -3, -2, 0],
+    disagreeEffect: [0, 19, 0, -5],
+  ),
+  Encounter(text: 'The governor stops in, looking for a new pet!',
+    agreeText: 'Recommend a cat',
+    disagreeText: 'Recommend a dog',
+    agreeResultText: 'The governor is more of a cat person anyway. Lady Flypaper lives comfortably in the governor\'s luxurious mansion, and a grateful governor gives generously.',
+    disagreeResultText: 'The governor\'s high profile brings a lot of attention to Harry Chomper, and the word gets out where to adopt a pet!',
+    agreeEffect: [28, 0, 0, 0],
+    disagreeEffect: [0, 0, 24, 0],
+  ),
+  Encounter(text: 'Ants have invaded the food shed!',
+    agreeText: 'Do battle with their queen',
+    disagreeText: 'Call for parlay and bargain',
+    agreeResultText: 'None so brave before! She sounds the call for retreat, and the entire colony marches swiftly to parts unknown. They have left a tidy warren of temperature controlled tunnels, perfect for storage!',
+    disagreeResultText: 'You eventually figure out her accent, and learn she was unaware that anyone owned the kibble. She apologizes and vows to defend you northern border, as long as there is "sugar in her veins" -- whatever that means.',
+    agreeEffect: [18, 0, 0, 0],
+    disagreeEffect: [0, 0, 14, 0],
+  ),
+
 
 
 ];
@@ -392,19 +425,15 @@ volunteer orientation
 need landscaping
 need a new roof - money is tight
 someone lost a love letter, only first names, do you advertise to get it back to them?
-A meteor strikes nearby. investigate (alien tech food dispenser), or call for help (government cordons off area, mystery grant money…)
 New dogs are so tiny, the slip out of kennels. buy aquariums?
 The AI in your phone would like to adopt a cat
 You go to buy kitty litter, but get lost in the back country for days. go north, go south, go bcak
-Dog hypnosis? They are very well trained, but it wears off quickly after adoption :(
 Driving to the vet’s office, you are lost. Stop to check map, or just try the next exit.
 This is actually a tiger cub / lion / wolf
 Do you go on an expidition to find the elephant graveyard?
-The governor is looking for a new dog and stops in!
 The axis of the earth’s gravity is off by 14 degrees inside the shelter. Tourism or perpetual motion?
 Inside one of the kennels, you discover a portal to a dimension where everything is made of kibble
 You find a cache of diamonds. One of the cats is a burglar!
-Ants have infested the food. Do battle, or bargain with their queen?
 You discover that one of the dog bowls turns dogs into puppies. Do you dare drink from it?
 The security cameras have been failing at night 3:33am. Do you sleep over? It’s a ghost!!!!
 Do you want enter a dog-o-thon race for charity?
