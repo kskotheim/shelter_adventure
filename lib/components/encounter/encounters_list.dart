@@ -415,6 +415,46 @@ final List<Encounter> encounters = [
     agreeEffect: [18, 0, 0, 0],
     disagreeEffect: [0, 0, 14, 0],
   ),
+  Encounter(text: 'Inside one of the kennels, you discover a portal to a dimension where the world is a pristine landscape crafted entirely out of kibble, chow, and gravy.',
+    agreeText: 'Let the dogs out!',
+    disagreeText: 'Hire a warlock to seal that evil portal',
+    agreeResultText: 'The puppers gnaw down a tree, like beavers. Others swim and gulp in the chicken broth pond. It\'s actually a little disturbing, but at least they are well fed.',
+    disagreeResultText: 'Furious sausage links whip out from the flagging portal, flailing and grasping. They lash at you and hurl rawhide sticks, as the warlock chants solemnly. Finally the hole erupts in light, and disappears, leaving you with a renowned reputation for doing the right thing even when it\'s hard.',
+    agreeEffect: [18, 19, 0, -5],
+    disagreeEffect: [0, 0, 20, 0],
+  ),
+  Encounter(text: 'You go on an expedition to find...',
+    agreeText: 'the elephant graveyard',
+    disagreeText: 'the eggplant graveyard',
+    agreeResultText: 'Machete. Vine. Sweat. Heat. Hill. Swamp. The trail is arduous, like saying "arduous arugula," but you persevere and press and push and persist, until you find the lost city of gold, El Dorado! Wait, why did you come out here? And what continent is this!?',
+    disagreeResultText: 'You\'re pretty sure that\'s not a real thing, but just to be sure you check the garbage behind the grocery store... Purple Gold! It was right here in your city all along. Your newfound fame goes a long way toward helping the shelter.',
+    agreeEffect: [-9, 0, 0, 21],
+    disagreeEffect: [1, 3, 5, 13],
+  ),
+  Encounter(text: 'Someone lost a love letter in the front office, only first names. do you advertise to get it back to them?',
+    agreeText: 'Put it on the marquee, baby!',
+    disagreeText: 'Put it in the lost and found, quietly.',
+    agreeResultText: 'A veritable parade of the love lorn claim ownership. You start to think you\'ll never find the true paramour. But you also solicit quite a few donations from these strange liars.',
+    disagreeResultText: 'Someone claims the letter, wearing a ball cap and sunglasses. Checking the security cams later, you are certain it was a famous movie star... and the other first name in the letter was not their spouse!',
+    agreeEffect: [5, 1, 0, 0],
+    disagreeEffect: [0, 0, 0, 9],
+  ),
+  Encounter(text: 'You always though that rinsing the kennels was surprisingly difficult. Turns out, the axis of the earth’s gravity is off by 6 degrees inside the shelter.',
+    agreeText: 'Start advertising your new Mystery "Spot"',
+    disagreeText: 'Harnes the differential between in and out for a perpetual motion generator',
+    agreeResultText: 'Folks flock from further and further to find fascination in your flashy physics-flouting phenomenon.  ',
+    disagreeResultText: 'Big Oil offers to buy the technology for enough money to power five shelters for a hundred years. You sell since your little flywheel doesn\'t power much more than a couple light bulbs. But they just sit on the patent and keep selling oil! Who would have guessed?',
+    agreeEffect: [2, -2, 9, 0],
+    disagreeEffect: [18, 5, -5, 0],
+  ),
+  Encounter(text: 'You discover that one of the dog bowls turns any dog who drinks from it into a puppy. Do you dare drink from it?',
+    agreeText: 'Sluuuurp!',
+    disagreeText: 'Throw that acursed thing in the trash!',
+    agreeResultText: 'It doesn\'t seem to have any effect on humans. But puppies are much easier to adopt out, so you start puppifying dogs that would otherwise take longer to get adopted.',
+    disagreeResultText: 'It\'s much easier to keep track of the animals now that they aren\'t transmogrifying all the time. But you wonder if you should have disposed of it more carefully.',
+    agreeEffect: [0, 6, 4, 0],
+    disagreeEffect: [16, 0, -5, 0],
+  ),
 
 
 
@@ -424,17 +464,12 @@ final List<Encounter> encounters = [
 volunteer orientation
 need landscaping
 need a new roof - money is tight
-someone lost a love letter, only first names, do you advertise to get it back to them?
 New dogs are so tiny, the slip out of kennels. buy aquariums?
 The AI in your phone would like to adopt a cat
 You go to buy kitty litter, but get lost in the back country for days. go north, go south, go bcak
 Driving to the vet’s office, you are lost. Stop to check map, or just try the next exit.
 This is actually a tiger cub / lion / wolf
-Do you go on an expidition to find the elephant graveyard?
-The axis of the earth’s gravity is off by 14 degrees inside the shelter. Tourism or perpetual motion?
-Inside one of the kennels, you discover a portal to a dimension where everything is made of kibble
 You find a cache of diamonds. One of the cats is a burglar!
-You discover that one of the dog bowls turns dogs into puppies. Do you dare drink from it?
 The security cameras have been failing at night 3:33am. Do you sleep over? It’s a ghost!!!!
 Do you want enter a dog-o-thon race for charity?
 A ghostly flying pirate ship descends onto the parking lot, and the captain demands cats. Call the cops, or buckle his swash?
