@@ -18,7 +18,6 @@ class TitleScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Text('Shelter Adventure', style: Style.titleTextStyleBold,),
-                Text('Title Screen', style: Style.titleTextStyleBold,),
               ],
             ),
             FlatButton(

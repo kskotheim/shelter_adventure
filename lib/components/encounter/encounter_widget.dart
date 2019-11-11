@@ -59,7 +59,7 @@ class EncounterWidget extends StatelessWidget {
                     padding: Style.currentEncounterTextPadding,
                     child: Text(
                       adventureLogic.currentEncounter.text,
-                      style: Style.subTitleTextStyle,
+                      style: (adventureLogic.currentEncounter.text.length < 150 ? Style.subTitleTextStyle : Style.subTitleTextStyleSmall),
                     ),
                   ),
 
@@ -87,6 +87,7 @@ class EncounterWidget extends StatelessWidget {
                       child: Text(
                         adventureLogic.currentEncounter.disagreeText,
                         style: Style.subTitleTextStyle,
+                        textAlign: TextAlign.center,
                       ),
                       onPressed: () => encounterLogic.noButtonPressed(context),
                     ),

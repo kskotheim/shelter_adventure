@@ -87,19 +87,15 @@ class AdventureLogic {
     _adventureStreamController.close();
   }
 
-  static int previousEncounterIndex = -1;
-  
+  static List<int> previousEncounterIndexes = [];
 
   Encounter getRandomEncounter() {
-    double _randomSeed = _random.nextDouble();
-    int index = (encounters.length * _randomSeed).floor();
+    int index;
+    do {
+      index = (encounters.length * _random.nextDouble()).floor();
+    } while (previousEncounterIndexes.contains(index));
 
-    while (index == previousEncounterIndex) {
-      _randomSeed = _random.nextDouble();
-      index = (encounters.length * _randomSeed).floor();
-    }
-
-    previousEncounterIndex = index;
+    previousEncounterIndexes.add(index);
     return encounters[index];
   }
 }

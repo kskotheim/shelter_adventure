@@ -64,7 +64,7 @@ class GameOverPage extends StatelessWidget {
           child: FlatButton(
             onPressed: gameLogic.showTitleScreen,
             child: Text(
-              'title',
+              'OK',
               style: Style.subTitleTextStyle,
             ),
           ),

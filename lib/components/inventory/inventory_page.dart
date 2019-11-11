@@ -67,7 +67,7 @@ class InventoryPage extends StatelessWidget {
                     // a list of equipped items
 
                     FlatButton(
-                      child: Text('Title'),
+                      child: Text('Back'),
                       onPressed: gameLogic.showTitleScreen,
                     ),
 

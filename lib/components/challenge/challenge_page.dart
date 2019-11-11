@@ -32,7 +32,7 @@ class ChallengePage extends StatelessWidget {
               ),
             ),
             FlatButton(
-              child: Text('Title'),
+              child: Text('Back'),
               onPressed: gameLogic.showTitleScreen,
             )
           ],

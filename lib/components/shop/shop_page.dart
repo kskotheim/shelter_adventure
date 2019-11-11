@@ -13,7 +13,7 @@ class ShopPage extends StatelessWidget {
           children: <Widget>[
             Text('Shop'),
             FlatButton(
-              child: Text('Title'),
+              child: Text('Back'),
               onPressed: gameLogic.showTitleScreen,
             )
           ],

@@ -111,12 +111,20 @@ class EncounterLogic {
 
   // Method to show a pop-up dialog with a specified text
   Future<void> showResultDialog(BuildContext context, String result) async {
+    double fontSize = 3000 / result.length;
+    if (fontSize > 24.0) {
+      fontSize = 24.0;
+    }
+    if (fontSize < 12.0) {
+      fontSize = 12.0;
+    }
+
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
           result,
-          style: Style.titleTextStyleBold,
+          style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold),
         ),
       ),
     );

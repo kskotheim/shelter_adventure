@@ -12,7 +12,6 @@ class Encounter {
   List<num> disagreeEffect;
   Random _random = Random();
 
-
   Encounter({
     this.text = 'this is a new encounter',
     this.agreeEffect,

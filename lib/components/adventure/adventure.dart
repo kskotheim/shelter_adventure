@@ -20,7 +20,7 @@ class Adventure {
   // Adventure constructor
   Adventure({this.numberOfTurnsUntilEnd}) {
     if (numberOfTurnsUntilEnd == null) {
-      numberOfTurnsUntilEnd = 10;
+      numberOfTurnsUntilEnd = 6;
     }
     _var0 = 50;
     _var1 = 50;
