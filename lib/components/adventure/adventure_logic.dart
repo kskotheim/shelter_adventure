@@ -66,14 +66,36 @@ class AdventureLogic {
       theAdventure.adventureOver = true;
       // calculate challenges achieved ...
       challengesAchieved = [];
-      int totalReward = 0;
+      var categoryRewards = {};
+
       theChallenges.forEach((challenge){
         if(theAdventure.var0 >= challenge.minScores[0] && theAdventure.var1 >= challenge.minScores[1] && theAdventure.var2 >= challenge.minScores[2] && theAdventure.var3 >= challenge.minScores[3]){
           //challenge achieved
-          challengesAchieved.add(challenge);
-          totalReward += challenge.reward;
+          if (!categoryRewards.containsKey(challenge.category)) {
+            categoryRewards[challenge.category] = {
+              'value': 0,
+              'challenge': {}
+            };
+          }
+          if (challenge.category == 'none') {
+            categoryRewards[challenge.category].value += challenge.reward;
+            challengesAchieved.add(challenge);
+          } else {
+            if (challenge.reward > categoryRewards[challenge.category]['value']) {
+              categoryRewards[challenge.category].value = challenge.reward;
+              categoryRewards[challenge.category].challenge = challenge;
+            }
+          }
         }
       });
+      int totalReward = 0;
+      categoryRewards.forEach((categoryName, categoryReward){
+        if (categoryName != 'none') {
+            totalReward += categoryReward.category.value;
+            challengesAchieved.add(categoryReward.challenge);
+        }
+      });
+
       gameLogic.addCurrency(totalReward);
 
     } else {
