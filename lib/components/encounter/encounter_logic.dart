@@ -126,10 +126,16 @@ class EncounterLogic {
           result,
           style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold),
         ),
+        actions: [new RaisedButton(
+          child: new Text(
+              'OK',
+              style: TextStyle(color: Colors.white),
+          ),
+          onPressed: () => Navigator.pop(context),
+        )],
       ),
     );
   }
-
 
   void dispose() {
     _optionSelectedStream.close();
