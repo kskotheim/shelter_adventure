@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shelter_adventure/components/game/game_logic.dart';
+import 'package:shelter_adventure/util/style.dart';
 
 class ShopPage extends StatelessWidget {
   @override
@@ -11,7 +12,10 @@ class ShopPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Text('Shop'),
+            Text(
+              'Challenges',
+              style: Style.titleTextStyleBold,
+            ),
             FlatButton(
               child: Text('Back'),
               onPressed: gameLogic.showTitleScreen,

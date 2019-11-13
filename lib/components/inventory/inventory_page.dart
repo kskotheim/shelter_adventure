@@ -30,7 +30,10 @@ class InventoryPage extends StatelessWidget {
                   children: <Widget>[
                     Container(),
 
-                    Text('Inventory:'),
+                    Text(
+                      'Inventory',
+                      style: Style.titleTextStyleBold,
+                    ),
 
                     Text('${gameLogic.currency} biscuits'),
 
@@ -52,7 +55,8 @@ class InventoryPage extends StatelessWidget {
                       children: <Widget>[
                         Text('Items:'),
                         Container(
-                          height: Style.itemListSize(context),
+                          height: Style.itemListSize(context) * 1.1,
+                          color: new Color(0xFFEEEEFF),
                           child: ListView(
                             children: List<Widget>.from(theItems
                                 .map((item) => ItemSelectionTile(

@@ -13,9 +13,13 @@ class ChallengePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Text('Challenges Page'),
+            Text(
+              'Challenges',
+              style: Style.titleTextStyleBold,
+            ),
             Container(
-              height: Style.itemListSize(context),
+              height: Style.itemListSize(context) * 1.1,
+              color: new Color(0xFFEEEEFF),
               child: ListView(
                 children: theChallenges
                     .map((challenge) => ListTile(
@@ -23,7 +27,7 @@ class ChallengePage extends StatelessWidget {
                           subtitle: Text(challenge.description),
                           leading: Container(
                             height: 35.0,
-                            width: 35.0,
+                            width: 70.0,
                             decoration: BoxDecoration(border: Border.all()),
                             child: Center(child: Text("+${challenge.reward}")),
                           ),
