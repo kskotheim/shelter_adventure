@@ -25,9 +25,14 @@ class GameLogic {
 
   int _currency;
   int get currency => _currency;
+  int _currencyHighWaterMark;
+  int get currencyHighWaterMark => _currencyHighWaterMark;
   void addCurrency(int add) {
     _currency += add;
     _sharedPrefs.setCurrency(_currency);
+    if (_currency > _currencyHighWaterMark) {
+      _currencyHighWaterMark = _currency;
+    }
   }
 
   GameLogic() {
@@ -40,6 +45,7 @@ class GameLogic {
     _sharedPrefs = await SharedPrefsManager.getInstance();
     _inventory = Inventory.fromString(_sharedPrefs.getInventory());
     _currency = _sharedPrefs.getCurrency() ?? 0;
+    _currencyHighWaterMark = _sharedPrefs.getCurrencyHighWaterMark() ?? 0;
 
     showTitleScreen();
   }

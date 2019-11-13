@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shelter_adventure/components/game/game_logic.dart';
 import 'package:shelter_adventure/components/inventory/inventory.dart';
 import 'package:shelter_adventure/components/inventory/inventory_logic.dart';
+import 'package:shelter_adventure/components/inventory/item.dart';
 import 'package:shelter_adventure/components/inventory/item_list.dart';
 import 'package:shelter_adventure/util/style.dart';
 
@@ -114,10 +115,15 @@ class ItemSelectionTile extends StatelessWidget {
     GameLogic gameLogic = Provider.of<GameLogic>(context);
     return ListTile(
       title: Text(
-          gameLogic.unlockedItemsContains(item.itemId) ? item.name : '???'),
-      subtitle: Text(gameLogic.unlockedItemsContains(item.itemId)
+          (gameLogic.unlockedItemsContains(item.itemId) || (item.costToUnlock <= gameLogic.currencyHighWaterMark))
+          ? item.name
+          : '???'
+      ),
+      subtitle: Text(
+          (gameLogic.unlockedItemsContains(item.itemId) || (item.costToUnlock <= gameLogic.currencyHighWaterMark))
           ? item.effectString
-          : '???'),
+          : '???'
+      ),
       trailing: gameLogic.inventoryContains(item.itemId)
           ? Icon(
               Icons.check,

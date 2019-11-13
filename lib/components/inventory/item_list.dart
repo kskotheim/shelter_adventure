@@ -1,25 +1,4 @@
-// this class represents the items you equip
-class Item {
-  final String itemId;
-  final String name;
-  final String effectString;
-  final List<int> additiveBonus;
-  final List<double> multiplicitiveBonus;
-  final int bonusTurns;
-  final int bonusInventory;
-  final int costToUnlock;
-
-  Item({
-    this.itemId,
-    this.name = 'item name',
-    this.effectString = 'item effect',
-    this.additiveBonus = const [0, 0, 0, 0],
-    this.multiplicitiveBonus = const [1.0, 1.0, 1.0, 1.0],
-    this.bonusTurns = 0,
-    this.bonusInventory = 0,
-    this.costToUnlock = 25,
-  }) : assert(itemId != null);
-}
+import 'package:shelter_adventure/components/inventory/item.dart';
 
 // these are all the items in the game
 final List<Item> theItems = [
@@ -51,32 +30,32 @@ final List<Item> theItems = [
     itemId: '5',
     name: 'Wi-Fi',
     effectString: '20% bonus to Operations effects',
-    multiplicitiveBonus: [1.2, 1.0, 1.0, 1.0],
+    multiplicativeBonus: [1.2, 1.0, 1.0, 1.0],
   ),
   Item(
     itemId: '6',
     name: 'Extra Nutrients',
     effectString: '20% bonus to Animals effects',
-    multiplicitiveBonus: [1.0, 1.2, 1.0, 1.0],
+    multiplicativeBonus: [1.0, 1.2, 1.0, 1.0],
   ),
   Item(
     itemId: '7',
     name: 'Coffee Machine',
     effectString: '20% bonus to Community effects',
-    multiplicitiveBonus: [1.0, 1.0, 1.2, 1.0],
+    multiplicativeBonus: [1.0, 1.0, 1.2, 1.0],
   ),
   Item(
     itemId: '8',
     name: 'Self Help Book',
     effectString: '20% Bonus to Personal effects',
-    multiplicitiveBonus: [1.0, 1.0, 1.0, 1.2],
+    multiplicativeBonus: [1.0, 1.0, 1.0, 1.2],
   ),
   Item(
     itemId: '9',
     name: 'Robot Receptionist',
     effectString: '+50 and 50% bonus to Operations',
     additiveBonus: [50, 0, 0, 0],
-    multiplicitiveBonus: [1.5, 1.0, 1.0, 1.0],
+    multiplicativeBonus: [1.5, 1.0, 1.0, 1.0],
     costToUnlock: 125,
   ),
   Item(
@@ -84,7 +63,7 @@ final List<Item> theItems = [
     name: 'Bark Translator',
     effectString: '+50 and 50% bonus to Animals',
     additiveBonus: [0, 50, 0, 0],
-    multiplicitiveBonus: [1.0, 1.5, 1.0, 1.0],
+    multiplicativeBonus: [1.0, 1.5, 1.0, 1.0],
     costToUnlock: 125,
   ),
   Item(
@@ -92,7 +71,7 @@ final List<Item> theItems = [
     name: 'Key to the City',
     effectString: '+50 and 50% bonus to Community',
     additiveBonus: [0, 0, 50, 0],
-    multiplicitiveBonus: [1.0, 1.0, 1.5, 1.0],
+    multiplicativeBonus: [1.0, 1.0, 1.5, 1.0],
     costToUnlock: 125,
   ),
   Item(
@@ -100,7 +79,7 @@ final List<Item> theItems = [
     name: 'Lucky Underpants',
     effectString: '+50 and 50% bonus to Personal',
     additiveBonus: [0, 0, 0, 50],
-    multiplicitiveBonus: [1.0, 1.0, 1.0, 1.5],
+    multiplicativeBonus: [1.0, 1.0, 1.0, 1.5],
     costToUnlock: 125,
   ),
   Item(
@@ -142,7 +121,7 @@ final List<Item> theItems = [
     itemId: '18',
     name: 'Dark Crystal Ball',
     effectString: '+300% bonus to all effects',
-    multiplicitiveBonus: [3.0, 3.0, 3.0, 3.0],
+    multiplicativeBonus: [3.0, 3.0, 3.0, 3.0],
     costToUnlock: 3000,
   ),
 ];

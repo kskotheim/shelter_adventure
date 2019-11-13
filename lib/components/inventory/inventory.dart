@@ -4,6 +4,7 @@
 
 import 'dart:convert';
 
+import 'package:shelter_adventure/components/inventory/item.dart';
 import 'package:shelter_adventure/components/inventory/item_list.dart';
 
 class Inventory {
@@ -12,7 +13,7 @@ class Inventory {
   static const String EQUIPPED_ITEM_IDS = 'Equipped_Item_Ids';
   static const String UNLOCKED_ITEMS = 'Unlocked_Items';
   static const int BASE_INVENTORY_SIZE = 3;
-  static const List<String> BASE_UNLOCKED_INVENTORY = ['1', '2', '3', '4'];
+  static const List<String> BASE_UNLOCKED_INVENTORY = [];
 
   int inventorySize;
   List<String> equippedItemIds;

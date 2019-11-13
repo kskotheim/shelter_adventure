@@ -5,7 +5,7 @@ import 'package:shelter_adventure/components/challenge/challenge.dart';
 import 'package:shelter_adventure/components/encounter/encounter.dart';
 import 'package:shelter_adventure/components/encounter/encounters_list.dart';
 import 'package:shelter_adventure/components/game/game_logic.dart';
-import 'package:shelter_adventure/components/inventory/item_list.dart';
+import 'package:shelter_adventure/components/inventory/item.dart';
 
 // this class calculates the effects of the previous decision and modifies the current adventure
 // it starts and stops the listeners when created and disposed, so it ought to be properly disposed
@@ -15,7 +15,8 @@ class AdventureLogic {
   Encounter currentEncounter;
   Random _random = Random();
   int numberOfTurns = 0;
-  List<double> totalMultiplicitiveBonus = [1.0, 1.0, 1.0, 1.0];
+  List<double> totalMultiplicativeBonus = [1.0, 1.0, 1.0, 1.0];
+  List<int> totalEveryEncounterBonus = [0, 0, 0, 0];
   List<Challenge> challengesAchieved;
 
   AdventureLogic({this.theAdventure, this.gameLogic}) {
@@ -30,8 +31,9 @@ class AdventureLogic {
   void _applyItemBonuses(Item item){
     for(int i=0; i<4; i++){
       theAdventure.incrementVar(i, item.additiveBonus[i]);
-      totalMultiplicitiveBonus[i] *= item.multiplicitiveBonus[i];
+      totalMultiplicativeBonus[i] *= item.multiplicativeBonus[i];
       theAdventure.numberOfTurnsUntilEnd += item.bonusTurns;
+      totalEveryEncounterBonus[i] += item.everyEncounterBonus[i];
     }
   }
 
@@ -41,21 +43,25 @@ class AdventureLogic {
   Stream<Adventure> get adventureStream => _adventureStreamController.stream;
   void updateAdventure() => _adventureStreamController.sink.add(theAdventure);
 
-  int _applyMultiplyBonus(int increment, int index) => (increment * totalMultiplicitiveBonus[index]).round();
+  int _applyMultiplyBonus(int increment, int index) => (increment * totalMultiplicativeBonus[index]).round();
+
+  int _applyEveryEncounterBonus(int increment, int index) => (increment + totalEveryEncounterBonus[index]);
+
+  int _calculateBonuses(int increment, int index) {
+    return _applyMultiplyBonus(_applyEveryEncounterBonus(increment, index), index);
+  }
 
   void incrementAdventure(bool agreeToProposition) {
     // depending on the proposition, and whether the user agrees,
     // increment the game state and then update the adventure
-    if (agreeToProposition) {
-      theAdventure.incrementVar0(_applyMultiplyBonus(currentEncounter.agreeEffect[0], 0));
-      theAdventure.incrementVar1(_applyMultiplyBonus(currentEncounter.agreeEffect[1], 1));
-      theAdventure.incrementVar2(_applyMultiplyBonus(currentEncounter.agreeEffect[2], 2));
-      theAdventure.incrementVar3(_applyMultiplyBonus(currentEncounter.agreeEffect[3], 3));
-    } else {
-      theAdventure.incrementVar0(currentEncounter.disagreeEffect[0]);
-      theAdventure.incrementVar1(currentEncounter.disagreeEffect[1]);
-      theAdventure.incrementVar2(currentEncounter.disagreeEffect[2]);
-      theAdventure.incrementVar3(currentEncounter.disagreeEffect[3]);
+    for (int ind = 0; ind < 4; ind++) {
+      theAdventure.incrementVar(
+        ind,
+        _calculateBonuses(
+            (agreeToProposition ? currentEncounter.agreeEffect[ind] : currentEncounter.disagreeEffect[ind]),
+            ind
+        )
+      );
     }
 
     numberOfTurns++;

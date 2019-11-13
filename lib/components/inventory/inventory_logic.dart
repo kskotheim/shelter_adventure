@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:shelter_adventure/components/game/game_logic.dart';
 import 'package:shelter_adventure/components/inventory/inventory.dart';
+import 'package:shelter_adventure/components/inventory/item.dart';
 import 'package:shelter_adventure/components/inventory/item_list.dart';
 import 'package:shelter_adventure/util/repository.dart';
 

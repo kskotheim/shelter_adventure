@@ -6,6 +6,7 @@ class SharedPrefsManager {
   static const String _USERNAME_KEY = 'username';
   static const String _INVENTORY_KEY = 'inventory';
   static const String _CURRENCY_KEY = 'currency';
+  static const String _CURRENCY_HIGH_WATER_MARK_KEY = 'currencyHighWaterMark';
   static const String _PURCHASES_KEY = 'purchases';
 
   static SharedPrefsManager _instance;
@@ -44,7 +45,13 @@ class SharedPrefsManager {
     return _preferences.getInt(_CURRENCY_KEY) ?? 0;
   }
 
-  
+  Future<bool> setCurrencyHighWaterMark(int currencyHighWaterMark) {
+    return _preferences.setInt(_CURRENCY_HIGH_WATER_MARK_KEY, currencyHighWaterMark);
+  }
+
+  int getCurrencyHighWaterMark() {
+    return _preferences.getInt(_CURRENCY_HIGH_WATER_MARK_KEY) ?? 0;
+  }
 
   Future<bool> setPurchase(String purchaseId) async {
     List<String> purchases = _preferences.getStringList(_PURCHASES_KEY) ?? [];
