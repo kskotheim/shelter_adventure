@@ -80,11 +80,11 @@ class InventoryPage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         FlatButton(
-                          child: Text('unlock all items'),
+                          child: Text('unlock all'),
                           onPressed: inventoryLogic.unlockAllItemsButtonPressed,
                         ),
                         FlatButton(
-                          child: Text('reset unlocked items'),
+                          child: Text('reset items'),
                           onPressed:
                               inventoryLogic.resetUnlockedItemsButtonPressed,
                         ),
