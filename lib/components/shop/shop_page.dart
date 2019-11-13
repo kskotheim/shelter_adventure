@@ -13,7 +13,7 @@ class ShopPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Text(
-              'Challenges',
+              'Shop',
               style: Style.titleTextStyleBold,
             ),
             FlatButton(
