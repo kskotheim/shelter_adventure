@@ -4,15 +4,17 @@ import 'package:shelter_adventure/components/inventory/item.dart';
 final List<Item> theItems = [
   Item(
     itemId: '1',
-    name: 'Rotary Phone',
-    effectString: 'Bonus +20 starting Operations score',
+    name: 'Mop and bucket',
+    effectString: 'Bonus +10 starting Operations score',
     additiveBonus: [20, 0, 0, 0],
+    costToUnlock: 10,
   ),
   Item(
     itemId: '2',
-    name: 'Dog Bone',
-    effectString: 'Bonus +20 starting Animal score',
-    additiveBonus: [0, 20, 0, 0],
+    name: 'Training Clicker',
+    effectString: '+1 Animal score on every encounter',
+    everyEncounterBonus: [0, 1, 0, 0],
+    costToUnlock: 50,
   ),
   Item(
     itemId: '3',
@@ -121,6 +123,14 @@ final List<Item> theItems = [
     itemId: '18',
     name: 'Dark Crystal Ball',
     effectString: '+300% bonus to all effects',
+    multiplicativeBonus: [3.0, 3.0, 3.0, 3.0],
+    costToUnlock: 3000,
+  ),
+  // TODO: give the rabbit's shoe a mechanical effect
+  Item(
+    itemId: '19',
+    name: 'Lucky Rabbit\'s Shoe',
+    effectString: 'A chance to reverse a negative effect, every encounter',
     multiplicativeBonus: [3.0, 3.0, 3.0, 3.0],
     costToUnlock: 3000,
   ),

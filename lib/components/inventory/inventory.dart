@@ -12,7 +12,7 @@ class Inventory {
   static const String INVENTORY_SIZE = 'Inventory_Size';
   static const String EQUIPPED_ITEM_IDS = 'Equipped_Item_Ids';
   static const String UNLOCKED_ITEMS = 'Unlocked_Items';
-  static const int BASE_INVENTORY_SIZE = 3;
+  static const int BASE_INVENTORY_SIZE = 1;
   static const List<String> BASE_UNLOCKED_INVENTORY = [];
 
   int inventorySize;

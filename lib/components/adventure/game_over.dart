@@ -25,15 +25,15 @@ class GameOverPage extends StatelessWidget {
                 padding: EdgeInsets.all(12.0),
                 child: Container(
                   padding: EdgeInsets.all(5.0),
-                  height: 60.0,
-                  width: 100.0,
-                  decoration: BoxDecoration(borderRadius:BorderRadius.circular(12.0), color: Colors.yellow.shade100),
+                  height: 80.0,
+                  width: 150.0,
+                  decoration: BoxDecoration(borderRadius:BorderRadius.circular(12.0), color: Colors.yellow.shade50),
                   child: Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Text(challenge.name, style: TextStyle(fontSize: 12.0),),
-                        Text('+${challenge.reward.toString()} Biscuits')
+                        Text('+${challenge.reward.toString()} Biscuit' + (challenge.reward == 1 ? '' : 's'))
                       ],
                     ),
                   ),
