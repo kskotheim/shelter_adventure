@@ -42,6 +42,10 @@ class GameOverPage extends StatelessWidget {
             },
           ).toList(),
         ),
+        Text(
+          'Biscuits: ${gameLogic.currency}',
+          style: Style.subTitleTextStyle
+        ),
         Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
