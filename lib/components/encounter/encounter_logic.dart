@@ -47,7 +47,8 @@ class EncounterLogic {
     if (!(_selectedOption is NothingSelected)) {
       statModificationTextWidgets = [null, null, null, null];
       for (int i = 0; i < 4; i++) {
-        num effect = _resultsSortedByVar[i][_selectedOption is YesSelected ? 0 : 1];
+        num effect =
+            _resultsSortedByVar[i][_selectedOption is YesSelected ? 0 : 1];
         String symbol = '+';
         TextStyle textStyle = Style.subTitleTextStyleGreen;
         if (effect < 0) {
@@ -82,8 +83,7 @@ class EncounterLogic {
   void noButtonPressed(BuildContext context) async {
     if (!(_selectedOption is NoSelected)) {
       _selectNo();
-    }
-    else {
+    } else {
       if (_currentEncounter.disagreeResultText != null) {
         await showResultDialog(
           context,
@@ -97,8 +97,7 @@ class EncounterLogic {
   void yesButtonPressed(BuildContext context) async {
     if (!(_selectedOption is YesSelected)) {
       _selectYes();
-    }
-    else {
+    } else {
       if (_currentEncounter.agreeResultText != null) {
         await showResultDialog(
           context,
@@ -121,18 +120,19 @@ class EncounterLogic {
 
     return showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text(
-          result,
-          style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold),
-        ),
-        actions: [new RaisedButton(
-          child: new Text(
-              'OK',
-              style: TextStyle(color: Colors.white),
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+        child: InkWell(
+          onTap: () => Navigator.pop(context),
+          child: Padding(
+            padding: const EdgeInsets.all(25.0),
+            
+            child: Text(
+              result,
+              style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold),
+            ),
           ),
-          onPressed: () => Navigator.pop(context),
-        )],
+        ),
       ),
     );
   }

@@ -7,26 +7,20 @@ class ShopPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GameLogic gameLogic = Provider.of<GameLogic>(context);
-    return WillPopScope(
-      onWillPop: () async {
-        gameLogic.showTitleScreen();
-        return false;
-      },
-      child: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Text(
-                'Shop',
-                style: Style.titleTextStyleBold,
-              ),
-              FlatButton(
-                child: Text('Back'),
-                onPressed: gameLogic.showTitleScreen,
-              )
-            ],
-          ),
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Text(
+              'Shop',
+              style: Style.titleTextStyleBold,
+            ),
+            FlatButton(
+              child: Text('Back'),
+              onPressed: gameLogic.showTitleScreen,
+            )
+          ],
         ),
       ),
     );

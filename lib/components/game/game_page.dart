@@ -12,42 +12,58 @@ class GamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     GameLogic gameLogic = GameLogic();
 
-    return WillPopScope(
-      onWillPop: () async => showDialog(
-        context: context,
-        builder: (context) => ConfirmExitGameDialog(),
-      ),
-      child: Provider<GameLogic>(
-        builder: (context) => gameLogic,
-        dispose: (context, _) => gameLogic.dispose(),
-        child: StreamBuilder<GameState>(
-          stream: gameLogic.gameState,
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) return CircularProgressIndicator();
-            if (snapshot.data is GameStateTitleScreen) {
-              return Center(
-                child: TitleScreen(),
-              );
-            }
-            if (snapshot.data is GameStatePlaying) {
-              return AdventurePage();
-            }
-            if (snapshot.data is GameStateShop) {
-              return ShopPage();
-            }
-            if (snapshot.data is GameStateInventory) {
-              return Center(
-                child: InventoryPage(),
-              );
-            }
-            if (snapshot.data is GameStateLoading) {
-              return LoadingScreen();
-            }
-            if (snapshot.data is GameStateChallenges) {
-              return ChallengePage();
-            }
-          },
-        ),
+    return Provider<GameLogic>(
+      builder: (context) => gameLogic,
+      dispose: (context, _) => gameLogic.dispose(),
+      child: StreamBuilder<GameState>(
+        stream: gameLogic.gameState,
+        builder: (context, snapshot) {
+          return WillPopScope(
+            onWillPop: () async {
+              if(snapshot.data is GameStateTitleScreen){
+                return showDialog(context: context, builder: (context) => ConfirmDialog(title: 'Exit?',));
+              }
+              else if(snapshot.data is GameStatePlaying){
+                bool optToEnd = await showDialog(context: context, builder: (context) => ConfirmDialog(title: 'End Adventure?',));
+                if(optToEnd){
+                  gameLogic.showTitleScreen();
+                }
+              }
+              else {
+                gameLogic.showTitleScreen();
+              }
+              return false;
+            },
+            child: Builder(
+              builder: (context) {
+                if (!snapshot.hasData)
+                  return CircularProgressIndicator();
+                if (snapshot.data is GameStateTitleScreen) {
+                  return Center(
+                    child: TitleScreen(),
+                  );
+                }
+                if (snapshot.data is GameStatePlaying) {
+                  return AdventurePage();
+                }
+                if (snapshot.data is GameStateShop) {
+                  return ShopPage();
+                }
+                if (snapshot.data is GameStateInventory) {
+                  return Center(
+                    child: InventoryPage(),
+                  );
+                }
+                if (snapshot.data is GameStateLoading) {
+                  return LoadingScreen();
+                }
+                if (snapshot.data is GameStateChallenges) {
+                  return ChallengePage();
+                }
+              },
+            ),
+          );
+        },
       ),
     );
   }
@@ -64,20 +80,26 @@ class LoadingScreen extends StatelessWidget {
   }
 }
 
-class ConfirmExitGameDialog extends StatelessWidget {
+class ConfirmDialog extends StatelessWidget {
+  final String title;
+  final String positiveText;
+  final String negativeText;
+
+  ConfirmDialog({this.title = 'Confirm?', this.positiveText = 'Yes', this.negativeText = 'Cancel'});
+
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      title: Text('Exit Game?'),
+      title: Text(title),
       children: <Widget>[
         FlatButton(
-          child: Text('Yes, Exit'),
+          child: Text(positiveText),
           onPressed: () => Navigator.pop(context, true),
         ),
         FlatButton(
-          child: Text('No, Stay'),
+          child: Text(negativeText),
           onPressed: () => Navigator.pop(context, false),
-        )
+        ),
       ],
     );
   }
