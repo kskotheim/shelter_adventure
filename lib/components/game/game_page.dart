@@ -12,10 +12,15 @@ class GamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     GameLogic gameLogic = GameLogic();
 
-    return Provider<GameLogic>(
-      builder: (context) => gameLogic,
-      dispose: (context, _) => gameLogic.dispose(),
-      child: StreamBuilder<GameState>(
+    return WillPopScope(
+      onWillPop: () async => showDialog(
+        context: context,
+        builder: (context) => ConfirmExitGameDialog(),
+      ),
+      child: Provider<GameLogic>(
+        builder: (context) => gameLogic,
+        dispose: (context, _) => gameLogic.dispose(),
+        child: StreamBuilder<GameState>(
           stream: gameLogic.gameState,
           builder: (context, snapshot) {
             if (!snapshot.hasData) return CircularProgressIndicator();
@@ -38,10 +43,12 @@ class GamePage extends StatelessWidget {
             if (snapshot.data is GameStateLoading) {
               return LoadingScreen();
             }
-            if(snapshot.data is GameStateChallenges) {
+            if (snapshot.data is GameStateChallenges) {
               return ChallengePage();
             }
-          }),
+          },
+        ),
+      ),
     );
   }
 }
@@ -53,6 +60,25 @@ class LoadingScreen extends StatelessWidget {
       body: Center(
         child: Text('loading ...'),
       ),
+    );
+  }
+}
+
+class ConfirmExitGameDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SimpleDialog(
+      title: Text('Exit Game?'),
+      children: <Widget>[
+        FlatButton(
+          child: Text('Yes, Exit'),
+          onPressed: () => Navigator.pop(context, true),
+        ),
+        FlatButton(
+          child: Text('No, Stay'),
+          onPressed: () => Navigator.pop(context, false),
+        )
+      ],
     );
   }
 }

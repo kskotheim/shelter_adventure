@@ -12,40 +12,53 @@ class AdventurePage extends StatelessWidget {
   Widget build(BuildContext context) {
     GameLogic gameLogic = Provider.of<GameLogic>(context);
     AdventureLogic logic = AdventureLogic(gameLogic: gameLogic);
-    return Scaffold(
-      backgroundColor: Style.backgroundColor,
-      body: Provider<AdventureLogic>(
-        builder: (context) => logic,
-        dispose: (context, value) => value.dispose(),
-        child: Center(
-          child: StreamBuilder<Adventure>(
-              stream: logic.adventureStream,
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) return CircularProgressIndicator();
 
-                if (snapshot.data.adventureOver) {
-                  // if the game is over, return the ending screen
-                  return GameOverPage();
-                }
+    return WillPopScope(
+      onWillPop: () async {
+        bool optToExit = await showDialog(
+          builder: (context) => ConfirmEndGameDialog(),
+          context: context,
+        );
+        if (optToExit) {
+          gameLogic.showTitleScreen();
+        }
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: Style.backgroundColor,
+        body: Provider<AdventureLogic>(
+          builder: (context) => logic,
+          dispose: (context, value) => value.dispose(),
+          child: Center(
+            child: StreamBuilder<Adventure>(
+                stream: logic.adventureStream,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) return CircularProgressIndicator();
 
-                // otherwise, proceed as usual
-                return Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: gameLogic.inventory.equippedItems
-                          .map((item) => Text("${item.name}  "))
-                          .toList(),
-                    ),
-                    GameProgressRow(
-                      pctOver: snapshot.data.pctOver,
-                    ),
-                    EncounterWidget(),
-                  ],
-                );
-              }),
+                  if (snapshot.data.adventureOver) {
+                    // if the game is over, return the ending screen
+                    return GameOverPage();
+                  }
+
+                  // otherwise, proceed as usual
+                  return Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: gameLogic.inventory.equippedItems
+                            .map((item) => Text("${item.name}  "))
+                            .toList(),
+                      ),
+                      GameProgressRow(
+                        pctOver: snapshot.data.pctOver,
+                      ),
+                      EncounterWidget(),
+                    ],
+                  );
+                }),
+          ),
         ),
       ),
     );
@@ -65,6 +78,25 @@ class GameProgressRow extends StatelessWidget {
           width: MediaQuery.of(context).size.width * pctOver,
           height: Style.progressRowHeight,
           color: Style.progressColor,
+        ),
+      ],
+    );
+  }
+}
+
+class ConfirmEndGameDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SimpleDialog(
+      title: Text('Leave Game?'),
+      children: <Widget>[
+        FlatButton(
+          child: Text('Let\'s finish this!'),
+          onPressed: () => Navigator.pop(context, false),
+        ),
+        FlatButton(
+          child: Text('Get me out of here!'),
+          onPressed: () => Navigator.pop(context, true),
         ),
       ],
     );
