@@ -488,6 +488,15 @@ An old tome with a dog obedience spell
 Best trainer in the world retires, donate (magical?) clicker. Sell, use at shelter, get famous?
 One of the cats claims to actually be a raccoon. Let them go?
 Spay appointment. Wait for cheaper vet. Book expensive vet now.
+after a walk in the rain, a dog is bone dry (pardon the pun), ask the volunteer or ask the dog
+you have amnesia! Ask what this place is, or keep your cool and play along
+A merchant from a distant land appears. Do you buy rune-encrusted buzz clippers, or a red silken collar
+A rep from a veterinary medicine company offers lower prices with a year contract
+Pet makeup? Yes, for the dogs. Yes, for the cats.
+The local zoo needs help. Which can you look after for a cpu[le weeks: A family of golden eagles, or a waddle of penguins?
+as you leave the shelter one evening, you heard faint music from the wooded area. Go now, or check it out in the morning.
+You notice a series of chips adn dents in the shelter's brick wall. Decipher the pattern, or fill in the gaps with mortar. 
+
 
   */
 
