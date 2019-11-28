@@ -43,6 +43,16 @@ class AdventureLogic {
   Stream<Adventure> get adventureStream => _adventureStreamController.stream;
   void updateAdventure() => _adventureStreamController.sink.add(theAdventure);
 
+  int getTutorialPlace() {
+    if (gameLogic.isFirstGame) {
+      if (numberOfTurns == 0) {
+        return 1;
+      }
+    }
+
+    return 0;
+  }
+
   int _applyMultiplyBonus(int increment, int index) => (increment * totalMultiplicativeBonus[index]).round();
 
   int _applyEveryEncounterBonus(int increment, int index) => (increment + totalEveryEncounterBonus[index]);
@@ -99,6 +109,7 @@ class AdventureLogic {
       });
 
       gameLogic.addCurrency(totalReward);
+      gameLogic.markGamePlayed();
 
     } else {
       //generate a new encounter

@@ -29,6 +29,7 @@ class Style {
   // large and small text style
   static final TextStyle titleTextStyleBold = TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold);
   static final TextStyle subTitleTextStyle = TextStyle(fontSize: 20.0);
+  static final TextStyle subTitleTextStyleDisabled = TextStyle(fontSize: 20.0, color: new Color(0xFFBBBBBB));
   static final TextStyle subTitleTextStyleSmall = TextStyle(fontSize: 16.0);
   static final TextStyle subTitleTextStyleGreen = TextStyle(fontSize: 20.0, color: Colors.green);
   static final TextStyle subTitleTextStyleRed = TextStyle(fontSize: 20.0, color: Colors.red);

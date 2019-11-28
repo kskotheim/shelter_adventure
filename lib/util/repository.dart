@@ -8,6 +8,7 @@ class SharedPrefsManager {
   static const String _CURRENCY_KEY = 'currency';
   static const String _CURRENCY_HIGH_WATER_MARK_KEY = 'currencyHighWaterMark';
   static const String _PURCHASES_KEY = 'purchases';
+  static const String _IS_FIRST_GAME_KEY = 'isFirstGame';
 
   static SharedPrefsManager _instance;
   static SharedPreferences _preferences;
@@ -43,6 +44,14 @@ class SharedPrefsManager {
 
   int getCurrency() {
     return _preferences.getInt(_CURRENCY_KEY) ?? 0;
+  }
+
+  bool getIsFirstGame() {
+    return _preferences.getBool(_IS_FIRST_GAME_KEY) ?? true;
+  }
+
+  Future<bool> setIsFirstGame(bool first) {
+    return _preferences.setBool(_IS_FIRST_GAME_KEY, first);
   }
 
   Future<bool> setCurrencyHighWaterMark(int currencyHighWaterMark) {

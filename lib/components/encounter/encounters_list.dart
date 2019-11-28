@@ -495,7 +495,7 @@ A rep from a veterinary medicine company offers lower prices with a year contrac
 Pet makeup? Yes, for the dogs. Yes, for the cats.
 The local zoo needs help. Which can you look after for a cpu[le weeks: A family of golden eagles, or a waddle of penguins?
 as you leave the shelter one evening, you heard faint music from the wooded area. Go now, or check it out in the morning.
-You notice a series of chips adn dents in the shelter's brick wall. Decipher the pattern, or fill in the gaps with mortar. 
+You notice a series of chips and dents in the shelter's brick wall. Decipher the pattern, or fill in the gaps with mortar.
 
 
   */

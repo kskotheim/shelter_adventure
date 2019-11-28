@@ -23,6 +23,12 @@ class GameLogic {
   bool unlockedItemsContains(String id) =>
       _inventory.unlockedItemIds.contains(id);
 
+  bool _isFirstGame;
+  bool get isFirstGame => _isFirstGame;
+  void markGamePlayed() {
+    _isFirstGame = false;
+  }
+
   int _currency;
   int get currency => _currency;
   int _currencyHighWaterMark;
@@ -46,6 +52,7 @@ class GameLogic {
     _inventory = Inventory.fromString(_sharedPrefs.getInventory());
     _currency = _sharedPrefs.getCurrency() ?? 0;
     _currencyHighWaterMark = _sharedPrefs.getCurrencyHighWaterMark() ?? 0;
+    _isFirstGame = _sharedPrefs.getIsFirstGame() ?? true;
 
     showTitleScreen();
   }
