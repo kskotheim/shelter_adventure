@@ -12,56 +12,77 @@ class GameOverPage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        Container(),
         Text(
           'Game Over',
           style: Style.titleTextStyleBold,
         ),
         Row(
-          mainAxisSize: MainAxisSize.min,
-          children: adventureLogic.challengesAchieved.map(
-            (challenge) {
-              return Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Container(
-                  padding: EdgeInsets.all(5.0),
-                  height: 80.0,
-                  width: 150.0,
-                  decoration: BoxDecoration(borderRadius:BorderRadius.circular(12.0), color: Colors.yellow.shade50),
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Text(challenge.name, style: TextStyle(fontSize: 12.0),),
-                        Text('+${challenge.reward.toString()} Biscuit' + (challenge.reward == 1 ? '' : 's'))
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            },
-          ).toList(),
-        ),
-        Text(
-          'Biscuits: ${gameLogic.currency}',
-          style: Style.subTitleTextStyle
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                  children: <Widget>[
+                    Text('${adventureLogic.theAdventure.var0}',
+                        style: Style.subTitleTextStyle),
+                    Text('Operations', style: Style.subTitleTextStyleSmall),
+                    Text('${adventureLogic.theAdventure.var2}',
+                        style: Style.subTitleTextStyle),
+                    Text('Community', style: Style.subTitleTextStyleSmall),
+                  ]
+              ),
+              Text("   "),
+              Column(
+                  children: <Widget>[
+                    Text('${adventureLogic.theAdventure.var1}',
+                        style: Style.subTitleTextStyle),
+                    Text('Animals', style: Style.subTitleTextStyleSmall),
+                    Text('${adventureLogic.theAdventure.var3}',
+                        style: Style.subTitleTextStyle),
+                    Text('Personal', style: Style.subTitleTextStyleSmall),
+                  ]
+              ),
+            ]
         ),
         Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              'Result:',
-              style: Style.titleTextStyleBold,
+              'Challenges Achieved',
+              style: Style.subTitleTextStyleSmall,
             ),
-            Text('Operations: ${adventureLogic.theAdventure.var0}',
-                style: Style.subTitleTextStyle),
-            Text('Animals: ${adventureLogic.theAdventure.var1}',
-                style: Style.subTitleTextStyle),
-            Text('Community: ${adventureLogic.theAdventure.var2}',
-                style: Style.subTitleTextStyle),
-            Text('Personal: ${adventureLogic.theAdventure.var3}',
-                style: Style.subTitleTextStyle),
-          ],
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: adventureLogic.challengesAchieved.length == 0 ?
+                  <Widget>[
+                    Text("\nNone")
+                  ] :
+              adventureLogic.challengesAchieved.map(
+                (challenge) {
+                  return Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Container(
+                      padding: EdgeInsets.all(5.0),
+                      height: 80.0,
+                      width: 150.0,
+                      decoration: BoxDecoration(borderRadius:BorderRadius.circular(12.0), color: Colors.yellow.shade50),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Text(challenge.name, style: TextStyle(fontSize: 12.0),),
+                            Text('+${challenge.reward.toString()} Biscuit' + (challenge.reward == 1 ? '' : 's'))
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ).toList(),
+            )
+          ]
+        ),
+        Text(
+          'Biscuits: ${gameLogic.currency}',
+          style: Style.subTitleTextStyle
         ),
         Container(
           decoration: Style.borderBoxDecoration,

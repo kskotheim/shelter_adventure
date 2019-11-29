@@ -100,6 +100,7 @@ class AdventureLogic {
           }
         }
       });
+
       int totalReward = 0;
       categoryRewards.forEach((categoryName, categoryReward){
         if (categoryName != 'none') {

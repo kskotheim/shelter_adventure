@@ -108,18 +108,6 @@ class EncounterLogic {
     }
   }
 
-  void tutorial(BuildContext context) async {
-    int tutorialPlace = adventureLogic.getTutorialPlace();
-    if (tutorialPlace == 1) {
-      await showResultDialog(
-        context,
-        "For your first game, try to get your 'Operations' score as high as possible.\n\nTap a choice once to see its results.\nTap again to confirm.",
-      );
-    } else if (tutorialPlace == 2) {
-      // show more help
-    }
-  }
-
   // Method to show a pop-up dialog with a specified text
   Future<void> showResultDialog(BuildContext context, String result) async {
     double fontSize = 3000 / result.length;

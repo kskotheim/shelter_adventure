@@ -19,8 +19,6 @@ class EncounterWidget extends StatelessWidget {
         child: StreamBuilder<OptionSelected>(
             stream: encounterLogic.optionSelected,
             builder: (context, snapshot) {
-              encounterLogic.tutorial(context);
-
               return Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
