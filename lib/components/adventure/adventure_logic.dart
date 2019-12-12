@@ -29,10 +29,10 @@ class AdventureLogic {
   }
 
   void _applyItemBonuses(Item item){
+    theAdventure.numberOfTurnsUntilEnd += item.bonusTurns;
     for(int i=0; i<4; i++){
       theAdventure.incrementVar(i, item.additiveBonus[i]);
       totalMultiplicativeBonus[i] *= item.multiplicativeBonus[i];
-      theAdventure.numberOfTurnsUntilEnd += item.bonusTurns;
       totalEveryEncounterBonus[i] += item.everyEncounterBonus[i];
     }
   }
@@ -110,7 +110,10 @@ class AdventureLogic {
       });
 
       gameLogic.addCurrency(totalReward);
-      gameLogic.markGamePlayed();
+
+      if(gameLogic.isFirstGame) {
+        gameLogic.markGamePlayed();
+      }
 
     } else {
       //generate a new encounter
