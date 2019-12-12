@@ -112,6 +112,12 @@ final List<Item> theItems = [
     costToUnlock: 250,
   ),
   Item(
+    itemId: '19',
+    name: 'Lucky Rabbit\'s Shoe',
+    effectString: 'A chance to reverse a negative effect, every encounter',
+    costToUnlock: 300,
+  ),
+  Item(
     itemId: '16',
     name: 'Magic Fiddle',
     effectString: '+6 bonus turns',
@@ -132,12 +138,5 @@ final List<Item> theItems = [
     multiplicativeBonus: [3.0, 3.0, 3.0, 3.0],
     costToUnlock: 3000,
   ),
-  // TODO: give the rabbit's shoe a mechanical effect
-  Item(
-    itemId: '19',
-    name: 'Lucky Rabbit\'s Shoe',
-    effectString: 'A chance to reverse a negative effect, every encounter',
-    multiplicativeBonus: [3.0, 3.0, 3.0, 3.0],
-    costToUnlock: 3000,
-  ),
+  
 ];
