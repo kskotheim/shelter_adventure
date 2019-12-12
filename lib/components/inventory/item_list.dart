@@ -114,7 +114,7 @@ final List<Item> theItems = [
   Item(
     itemId: '19',
     name: 'Lucky Rabbit\'s Shoe',
-    effectString: 'A chance to reverse a negative effect, every encounter',
+    effectString: '25% chance to reverse a negative effect, every encounter',
     costToUnlock: 300,
   ),
   Item(

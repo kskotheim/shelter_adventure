@@ -456,6 +456,42 @@ final List<Encounter> encounters = [
     agreeEffect: [0, 6, 4, 0],
     disagreeEffect: [16, 0, -5, 0],
   ),
+  Encounter(
+    text: 'A Rottweiler puppy is up for adoption, and the rules dictate that you must have a yard in order to adopt her. A wealthy client explains that he lives on a yacht, and that any pup of his will live a life of luxury. He also offers to make a \'donation\' to your personal bank account for any inconvenience the unusual circumstances have caused. ',
+    agreeText: 'Rules? Those are more like guidelines',
+    disagreeText: 'Rules are rules, and yachts are not suitable environments to raise a rottweiler',
+    agreeResultText: 'Your bank account swells, like the seas under First Mate Rottie\'s legs',
+    disagreeResultText: 'The Rottweiler is adopted by a friendly farmer',
+    agreeEffect: [-2, -2, -2, 18],
+    disagreeEffect: [2, 8, 2, 4],
+  ),
+  Encounter(
+    text: 'You get a coupon for a gym membership',
+    agreeText: 'Go to the gym',
+    disagreeText: 'Yuck',
+    agreeResultText: 'You get in the habit of waking up early and feel better on days you get some exercise',
+    disagreeResultText: 'Who has time to exercise?',
+    agreeEffect: [-2, 0, 0, 12],
+    disagreeEffect: [4, 2, 0, -2],
+  ),
+  Encounter(
+    text: 'A new season of your favorite show was just released! And for some reason it was all released at once ...',
+    agreeText: 'Watch it all tonight!',
+    disagreeText: 'Better to just watch one episode at a time and savor the experience',
+    agreeResultText: 'You don\'t get much sleep and are rather tired the next day',
+    disagreeResultText: 'The suspense is agonizingly delightful, and you chat with your coworkers about it for weeks',
+    agreeEffect: [-3, -4, 2, 6],
+    disagreeEffect: [0, 0, 4, 11],
+  ),
+  Encounter(
+    text: 'Your sister asks if you want to come on vacation to Peru?',
+    agreeText: 'A vacation sounds wonderful',
+    disagreeText: 'The shelter needs you!',
+    agreeResultText: 'You hike to the top of Machu-Pichu. You are licked by a llama.',
+    disagreeResultText: 'Your sister becomes a shaman and does not return for several years',
+    agreeEffect: [-4, 0, 0, 10],
+    disagreeEffect: [4, 0, 3, -3],
+  ),
 
 
 
