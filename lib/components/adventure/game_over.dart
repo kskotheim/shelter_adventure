@@ -55,6 +55,7 @@ class GameOverPage extends StatelessWidget {
                   <Widget>[
                     Text("\nNone")
                   ] :
+
               adventureLogic.challengesAchieved.map(
                 (challenge) {
                   return Padding(
@@ -77,6 +78,7 @@ class GameOverPage extends StatelessWidget {
                   );
                 },
               ).toList(),
+
             )
           ]
         ),

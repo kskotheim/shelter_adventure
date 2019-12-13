@@ -83,6 +83,7 @@ class AdventureLogic {
       // calculate challenges achieved ...
       challengesAchieved = [];
       var categoryRewards = {};
+      int totalReward = 0;
 
       theChallenges.forEach((challenge){
         if(theAdventure.var0 >= challenge.minScores[0] && theAdventure.var1 >= challenge.minScores[1] && theAdventure.var2 >= challenge.minScores[2] && theAdventure.var3 >= challenge.minScores[3]){
@@ -90,7 +91,7 @@ class AdventureLogic {
           categoryRewards.putIfAbsent(challenge.category, () => {'reward': 0, 'challenge': {}});
 
           if (challenge.category == 'none') {
-            categoryRewards[challenge.category]['reward'] += challenge.reward;
+            totalReward += challenge.reward;
             challengesAchieved.add(challenge);
           } else {
             if (challenge.reward > categoryRewards[challenge.category]['reward']) {
@@ -101,7 +102,6 @@ class AdventureLogic {
         }
       });
 
-      int totalReward = 0;
       categoryRewards.forEach((categoryName, categoryReward){
         if (categoryName != 'none') {
             totalReward += categoryReward['reward'];
