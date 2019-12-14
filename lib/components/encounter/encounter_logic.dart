@@ -8,7 +8,7 @@ import 'package:shelter_adventure/util/style.dart';
 class EncounterLogic {
   final AdventureLogic adventureLogic;
   OptionSelected _selectedOption = NothingSelected();
-  List<dynamic> statModificationTextWidgets = [null, null, null, null];
+  List<dynamic> statModificationWidgets = [null, null, null, null];
 
   Encounter _currentEncounter;
   List<List<num>> _resultsSortedByVar;
@@ -45,7 +45,7 @@ class EncounterLogic {
   // it is called each time a new option (yes/no) is selected
   void _setModificationText() {
     if (!(_selectedOption is NothingSelected)) {
-      statModificationTextWidgets = [null, null, null, null];
+      statModificationWidgets = [null, null, null, null];
       for (int i = 0; i < 4; i++) {
         num effect =
             _resultsSortedByVar[i][_selectedOption is YesSelected ? 0 : 1];
@@ -57,17 +57,17 @@ class EncounterLogic {
           textStyle = Style.subTitleTextStyleRed;
         }
         if (effect > 19) {
-          statModificationTextWidgets[i] = Text(
+          statModificationWidgets[i] = Text(
             ' ' + symbol + symbol + symbol,
             style: textStyle,
           );
         } else if (effect > 9) {
-          statModificationTextWidgets[i] = Text(
+          statModificationWidgets[i] = Text(
             ' ' + symbol + symbol,
             style: textStyle,
           );
         } else if (effect > 0) {
-          statModificationTextWidgets[i] = Text(
+          statModificationWidgets[i] = Text(
             ' ' + symbol,
             style: textStyle,
           );

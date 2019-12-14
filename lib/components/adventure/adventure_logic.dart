@@ -18,6 +18,8 @@ class AdventureLogic {
   List<double> totalMultiplicativeBonus = [1.0, 1.0, 1.0, 1.0];
   List<int> totalEveryEncounterBonus = [0, 0, 0, 0];
   List<Challenge> challengesAchieved;
+  bool rabbitsShoeEquipped = false;
+  double rabbitsShoeChance = .25;
 
   AdventureLogic({this.theAdventure, this.gameLogic}) {
     assert(gameLogic != null);
@@ -29,11 +31,14 @@ class AdventureLogic {
   }
 
   void _applyItemBonuses(Item item){
+    theAdventure.numberOfTurnsUntilEnd += item.bonusTurns;
     for(int i=0; i<4; i++){
       theAdventure.incrementVar(i, item.additiveBonus[i]);
       totalMultiplicativeBonus[i] *= item.multiplicativeBonus[i];
-      theAdventure.numberOfTurnsUntilEnd += item.bonusTurns;
       totalEveryEncounterBonus[i] += item.everyEncounterBonus[i];
+    }
+    if(item.itemId == '19'){
+      rabbitsShoeEquipped = true;
     }
   }
 
@@ -62,17 +67,42 @@ class AdventureLogic {
   }
 
   void incrementAdventure(bool agreeToProposition) {
+
     // depending on the proposition, and whether the user agrees,
     // increment the game state and then update the adventure
+
+    //calculate the effects
+    List<int> effects = [0,0,0,0];
     for (int ind = 0; ind < 4; ind++) {
-      theAdventure.incrementVar(
-        ind,
-        _calculateBonuses(
-            (agreeToProposition ? currentEncounter.agreeEffect[ind] : currentEncounter.disagreeEffect[ind]),
-            ind
-        )
+      effects[ind] = _calculateBonuses(
+          (agreeToProposition ? currentEncounter.agreeEffect[ind] : currentEncounter.disagreeEffect[ind]),
+          ind
       );
     }
+    //check whether rabbits foot is equipped + triggered
+    bool rabbitsShoeTriggered = rabbitsShoeEquipped && Random().nextDouble() < rabbitsShoeChance;
+    if(rabbitsShoeTriggered){
+      //find all negative effects and randomly reverse one
+      List<int> indicesOfNegativeEffects = [];
+      for(int i=0; i<4; i++){
+        if(effects[i] < 0){
+          indicesOfNegativeEffects.add(i);
+        }
+      }
+      if(indicesOfNegativeEffects.length > 0){
+        int indexToBeReversed = indicesOfNegativeEffects[Random().nextInt(indicesOfNegativeEffects.length)];
+        effects[indexToBeReversed] = -1 * effects[indexToBeReversed];
+      }
+    }
+    //apply effects
+    for(int ind = 0; ind < 4; ind++){
+      theAdventure.incrementVar(
+        ind,
+        effects[ind]
+      );
+    }
+    
+
 
     numberOfTurns++;
     theAdventure.pctOver =
@@ -110,7 +140,10 @@ class AdventureLogic {
       });
 
       gameLogic.addCurrency(totalReward);
-      gameLogic.markGamePlayed();
+
+      if(gameLogic.isFirstGame) {
+        gameLogic.markGamePlayed();
+      }
 
     } else {
       //generate a new encounter

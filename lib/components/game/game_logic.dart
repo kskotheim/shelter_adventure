@@ -26,6 +26,7 @@ class GameLogic {
   bool _isFirstGame;
   bool get isFirstGame => _isFirstGame;
   void markGamePlayed() {
+    _sharedPrefs.setIsFirstGame(false);
     _isFirstGame = false;
   }
 
