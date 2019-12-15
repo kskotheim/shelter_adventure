@@ -45,6 +45,34 @@ final List<Item> theItems = [
     costToUnlock: 200,
   ),
   Item(
+    itemId: '5.1',
+    name: 'Flawless Staff Training Manaul',
+    effectString: 'Double bonus to Operations scores',
+    multiplicativeBonus: [2.0, 1.0, 1.0, 1.0],
+    costToUnlock: 350,
+  ),
+  Item(
+    itemId: '5.2',
+    name: 'Mystically Enhanced Toy Design',
+    effectString: '+3 Animal score on every encounter',
+    everyEncounterBonus: [0, 3, 0, 0],
+    costToUnlock: 650,
+  ),
+  Item(
+    itemId: '5.3',
+    name: 'Free Coffee In The Lobby',
+    effectString: 'Bonus +25 starting Community score',
+    additiveBonus: [0, 0, 25, 0],
+    costToUnlock: 1000,
+  ),
+  Item(
+    itemId: '5.4',
+    name: 'Self Help Book',
+    effectString: '+4 Personal score on every encounter',
+    everyEncounterBonus: [0, 0, 4, 0],
+    costToUnlock: 1000,
+  ),
+  Item(
     itemId: '6',
     name: 'Wi-Fi',
     effectString: '25% bonus to Operations effects',
@@ -59,7 +87,7 @@ final List<Item> theItems = [
   ),
   Item(
     itemId: '9',
-    name: 'Self Help Book',
+    name: 'Self Help Videos',
     effectString: '25% Bonus to Personal effects',
     multiplicativeBonus: [1.0, 1.0, 1.0, 1.25],
     costToUnlock: 20,
