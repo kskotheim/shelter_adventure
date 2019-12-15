@@ -59,7 +59,11 @@ class EncounterWidget extends StatelessWidget {
                     padding: Style.currentEncounterTextPadding,
                     child: Text(
                       adventureLogic.currentEncounter.text,
-                      style: (adventureLogic.currentEncounter.text.length < 150 ? Style.subTitleTextStyle : Style.subTitleTextStyleSmall),
+                      style: (adventureLogic.currentEncounter.text.length < 150 ?
+                        Style.subTitleTextStyle :
+                        adventureLogic.currentEncounter.text.length < 300 ?
+                          Style.subTitleTextStyleSmall :
+                          Style.subTitleTextStyleSmaller),
                     ),
                   ),
 

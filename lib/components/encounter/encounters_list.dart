@@ -457,7 +457,7 @@ final List<Encounter> encounters = [
     disagreeEffect: [16, 0, -5, 0],
   ),
   Encounter(
-    text: 'A Rottweiler puppy is up for adoption, and the rules dictate that you must have a yard in order to adopt her. A wealthy client explains that he lives on a yacht, and that any pup of his will live a life of luxury. He also offers to make a \'donation\' to your personal bank account for any inconvenience the unusual circumstances have caused. ',
+    text: 'A Rottweiler puppy is up for adoption, and the rules dictate that you must have a yard in order to adopt her. A wealthy client explains that he lives on a yacht, and that any pup of his will live a life of luxury. He also offers to make a \'donation\' to your personal bank account for any inconvenience the unusual circumstances have caused.',
     agreeText: 'Rules? Those are more like guidelines',
     disagreeText: 'Rules are rules, and yachts are not suitable environments to raise a rottweiler',
     agreeResultText: 'Your bank account swells, like the seas under First Mate Rottie\'s legs',

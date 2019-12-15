@@ -14,14 +14,14 @@ final List<Item> theItems = [
     name: 'Training Clickers',
     effectString: '50% bonus to Animals effects',
     multiplicativeBonus: [1.0, 1.5, 1.0, 1.0],
-    costToUnlock: 50,
+    costToUnlock: 30,
   ),
   Item(
     itemId: '3',
     name: 'Extra Nutritious Kibble Recipe',
     effectString: '+1 Animal score on every encounter',
     everyEncounterBonus: [0, 1, 0, 0],
-    costToUnlock: 50,
+    costToUnlock: 30,
   ),
   Item(
     itemId: '4',
@@ -31,11 +31,18 @@ final List<Item> theItems = [
     costToUnlock: 75,
   ),
   Item(
+    itemId: '4.5',
+    name: 'Bowl of Candy',
+    effectString: 'Bonus +25 starting Community score',
+    additiveBonus: [0, 0, 25, 0],
+    costToUnlock: 125,
+  ),
+  Item(
     itemId: '5',
     name: 'Lucky Power Crystal',
     effectString: 'Bonus +15 to all starting scores',
     additiveBonus: [15, 15, 15, 15],
-    costToUnlock: 115,
+    costToUnlock: 200,
   ),
   Item(
     itemId: '6',
@@ -43,12 +50,6 @@ final List<Item> theItems = [
     effectString: '25% bonus to Operations effects',
     multiplicativeBonus: [1.25, 1.0, 1.0, 1.0],
     costToUnlock: 20,
-  ),
-  Item(
-    itemId: '7',
-    name: 'Bowl of Candy',
-    effectString: 'Bonus +20 starting Community score',
-    additiveBonus: [0, 0, 20, 0],
   ),
   Item(
     itemId: '8',
