@@ -1,3 +1,7 @@
+//TODO: add variable that is shown the first itme this challenge achieved
+// and flag it as completed in sharedPreferences 
+// only show challenges you have completed (+ the next three?) in the challenge list
+
 class Challenge {
   final String id;
   final String name;

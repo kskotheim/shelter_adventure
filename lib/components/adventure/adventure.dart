@@ -17,6 +17,8 @@ class Adventure {
   int get var2 => _var2;
   int get var3 => _var3;
 
+  bool get hasNegativeVar => _var0 < 0 || _var1 < 0 || _var2 < 0 || _var3 < 0;
+
   // Adventure constructor
   Adventure({this.numberOfTurnsUntilEnd}) {
     if (numberOfTurnsUntilEnd == null) {

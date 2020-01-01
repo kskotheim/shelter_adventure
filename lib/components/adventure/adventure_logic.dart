@@ -94,6 +94,7 @@ class AdventureLogic {
         effects[indexToBeReversed] = -1 * effects[indexToBeReversed];
       }
     }
+    
     //apply effects
     for(int ind = 0; ind < 4; ind++){
       theAdventure.incrementVar(
@@ -101,15 +102,22 @@ class AdventureLogic {
         effects[ind]
       );
     }
+
+    // check if game is over by effects
+    if(theAdventure.hasNegativeVar){
+      theAdventure.endAdventure();
+    }
     
-
-
+    // check if game is over by turns
     numberOfTurns++;
     theAdventure.pctOver =
         numberOfTurns / (theAdventure.numberOfTurnsUntilEnd - 1);
     if (numberOfTurns >= theAdventure.numberOfTurnsUntilEnd) {
       // end adventure ...
-      theAdventure.adventureOver = true;
+      theAdventure.endAdventure();
+    }
+
+    if(theAdventure.adventureOver){
       // calculate challenges achieved ...
       challengesAchieved = [];
       var categoryRewards = {};
