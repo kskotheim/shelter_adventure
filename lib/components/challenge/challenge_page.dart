@@ -23,8 +23,7 @@ class ChallengePage extends StatelessWidget {
               child: ListView(
                 children: theChallenges
                     .map((challenge) => ListTile(
-                          title: Text(challenge.name),
-                          subtitle: Text(challenge.description),
+                          title: Text(challenge.description),
                           leading: Container(
                             height: 35.0,
                             width: 70.0,
