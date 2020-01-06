@@ -164,15 +164,21 @@ class AdventureLogic {
     _adventureStreamController.close();
   }
 
-  static List<int> previousEncounterIndexes = [];
+
+  // List<Encounter>.from keeps this object separate in memory from the other global encounters variable, 
+  // so encounters are not removed from the other one as they are added to this one
+  static List<Encounter> remainingEncounters = List<Encounter>.from(encounters);
 
   Encounter getRandomEncounter() {
-    int index;
-    do {
-      index = (encounters.length * _random.nextDouble()).floor();
-    } while (previousEncounterIndexes.contains(index));
+    int index = _random.nextInt(remainingEncounters.length);
+    Encounter encounter = remainingEncounters[index];
 
-    previousEncounterIndexes.add(index);
-    return encounters[index];
+    remainingEncounters.removeAt(index);
+
+    if(remainingEncounters.length == 0){
+      remainingEncounters = List<Encounter>.from(encounters);
+    }
+
+    return encounter;
   }
 }

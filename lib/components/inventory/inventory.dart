@@ -18,8 +18,7 @@ class Inventory {
   int inventorySize;
   List<String> equippedItemIds;
   List<Item> get equippedItems => equippedItemIds
-      .map((id) => theItems.where((item) => item.itemId == id).toList()[0])
-      .toList();
+      .map((id) => theItems.singleWhere((item) => item.itemId == id)).toList();
 
   List<String> unlockedItemIds;
 

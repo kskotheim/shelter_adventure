@@ -125,7 +125,7 @@ final List<Challenge> theChallenges = [
     name: 'Dominate the Industry',
     description: 'Finish with 200 Operations',
     minScores: [200, 0, 0, 0],
-    reward: 35,
+    reward: 500,
     category: 'Operations',
   ),
   Challenge(
@@ -133,7 +133,7 @@ final List<Challenge> theChallenges = [
     name: 'Doggie Paradise',
     description: 'Finish with 200 Animals',
     minScores: [0, 200, 0, 0],
-    reward: 35,
+    reward: 500,
     category: 'Animals',
   ),
   Challenge(
@@ -141,7 +141,7 @@ final List<Challenge> theChallenges = [
     name: 'The Friendliest Neighbor',
     description: 'Finish with 200 Community',
     minScores: [0, 0, 200, 0],
-    reward: 35,
+    reward: 500,
     category: 'Community',
   ),
   Challenge(
@@ -149,7 +149,7 @@ final List<Challenge> theChallenges = [
     description: 'Finish with 200 Personal',
     name: 'Ruler of Your Domain',
     minScores: [0, 0, 0, 200],
-    reward: 35,
+    reward: 500,
     category: 'Personal',
   ),
   Challenge(
@@ -157,7 +157,7 @@ final List<Challenge> theChallenges = [
     name: 'Thriving Business, Thriving Animals',
     description: 'Finish with 220 Operations and 220 Animals',
     minScores: [220, 220, 0, 0],
-    reward: 45,
+    reward: 500,
     category: 'Operations+Animals',
   ),
   Challenge(
@@ -165,7 +165,7 @@ final List<Challenge> theChallenges = [
     name: 'Total People Person',
     description: 'Finish with 230 Community and 210 Personal',
     minScores: [0, 0, 230, 210],
-    reward: 45,
+    reward: 500,
     category: 'Community+Personal',
   ),
 
@@ -174,7 +174,7 @@ final List<Challenge> theChallenges = [
     name: 'Remember the sesquicentennial? I don\'t.',
     description: 'Finish with 150 in all categories',
     minScores: [150, 150, 150, 150],
-    reward: 50,
+    reward: 500,
     category: 'All',
   ),
 ];

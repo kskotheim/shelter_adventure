@@ -2,8 +2,11 @@
 
 class Adventure {
   int numberOfTurnsUntilEnd;
-  bool adventureOver = false;
+  bool _adventureOver = false;
   double pctOver = 0.0;
+
+  bool get adventureOver => _adventureOver;
+  void endAdventure() => _adventureOver = true;
 
   // the underscore means a variable is private
   int _var0;

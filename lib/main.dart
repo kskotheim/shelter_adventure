@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:shelter_adventure/components/game/game_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(new MyApp());
