@@ -492,13 +492,57 @@ final List<Encounter> encounters = [
     agreeEffect: [-4, 0, 0, 10],
     disagreeEffect: [4, 0, 3, -3],
   ),
+  Encounter(
+    text: 'It is time to lead volunteer orientation',
+    agreeText: 'Emphasize how important it is to follow the rules',
+    disagreeText: 'Emphasize how important it is to give extra pets',
+    agreeResultText: 'The volunteers seem like they will stick to the book',
+    disagreeResultText: 'The volunteers are happy to be in such a friendly workplace',
+    agreeEffect: [4, 0, 0, 0],
+    disagreeEffect: [-1, 5, 0, 0],
+  ),
+  Encounter(
+    text: 'A stray kitten has been left by the front door. When you pet it, a genie appears. What do you wish for?',
+    agreeText: 'Wish for someone to adopt this kitten',
+    disagreeText: 'Can you wish for more wishes?',
+    agreeResultText: 'The genie is impressed by your selfless gesture. He adopts the kitten and makes an extra donation to the shelter.',
+    disagreeResultText: 'No, but the genie gives you some gift cards to the mall',
+    agreeEffect: [10, 15, 0, 0],
+    disagreeEffect: [0, 0, 0, 25],
+  ),
+  Encounter(
+    text: 'Someone calls to ask you to send over an assortment of your most photogenic animals to audition for a big movie.',
+    agreeText: 'Tell them they can come to your shelter to see them for themselves if they want',
+    disagreeText: 'Hang up the phone and pretend that never happened',
+    agreeResultText: 'They say they will get back to you',
+    disagreeResultText: 'You congratulate yourself for keeping a cool head',
+    agreeEffect: [0, 0, 0, 0],
+    disagreeEffect: [0, 5, 0, 2],
+  ),
+  Encounter(
+    text: 'Someone on social media is attacking your organization with blatant falsehoods, and it\'s starting to get attention',
+    agreeText: 'Make a sincere response',
+    disagreeText: 'Block them and forget about it',
+    agreeResultText: 'You spend all evening crafting a response. It is well recieved, but it stresses you out!',
+    disagreeResultText: 'You remind yourself not to get stressed out about what people say online, and instead take some time to play with the dogs',
+    agreeEffect: [10, 0, 0, -4],
+    disagreeEffect: [-5, 0, 4, 8],
+  ),
+  Encounter(
+    text: 'A local zoo is remodeling and needs some temporary housing assistance, which can you take?',
+    agreeText: 'A family of golden eagles',
+    disagreeText: 'A waddle of penguins',
+    agreeResultText: 'Their talons are sharp! After a week you are covered in scratches, but the visitors love them.',
+    disagreeResultText: 'It turns out they are ancient penguins reanimated from fossilized DNA, and are five feet tall! Fortunately they are decent at front office and clerical work, so the shelter runs smoothly while they are staying.',
+    agreeEffect: [0, 0, 8, -3],
+    disagreeEffect: [12, 0, 0, 0],
+  ),
 
 
 
 ];
   /*
 
-volunteer orientation
 need landscaping
 need a new roof - money is tight
 New dogs are so tiny, the slip out of kennels. buy aquariums?
@@ -513,7 +557,6 @@ A ghostly flying pirate ship descends onto the parking lot, and the captain dema
 Geologists have discovered a tiny active volcano next door. Move the shelter?
 The rats in the attic wear tiny robes and worship the statue of a cat god
 You find a cell phone in a kennel. One of the dogs runs a side business as a bookie.
-While petting a cat, a genie pours forth! Do you dare make some wishes?
 Do you allow a field trip from the elementary school? (kid tries to steal a puppy)
 A witch is looking for a new familiar. Tell her to leave (face discrimination laws). Help (the whole coven ends up adopting here!)
 The annual gala fundraiser. How much effort to put in? balance personal life and shelter profit
@@ -529,7 +572,6 @@ you have amnesia! Ask what this place is, or keep your cool and play along
 A merchant from a distant land appears. Do you buy rune-encrusted buzz clippers, or a red silken collar
 A rep from a veterinary medicine company offers lower prices with a year contract
 Pet makeup? Yes, for the dogs. Yes, for the cats.
-The local zoo needs help. Which can you look after for a cpu[le weeks: A family of golden eagles, or a waddle of penguins?
 as you leave the shelter one evening, you heard faint music from the wooded area. Go now, or check it out in the morning.
 You notice a series of chips and dents in the shelter's brick wall. Decipher the pattern, or fill in the gaps with mortar.
 
